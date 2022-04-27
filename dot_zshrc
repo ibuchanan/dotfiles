@@ -48,6 +48,11 @@ if [[ -x "$(command -v lpass)" ]]; then
     ATLASSIAN_SITE_BASIC_PASS=$(lpass show ".env\\${LPASS_ENV}/site" --password)
 fi
 
+# Docker (via Podman)
+if [[ -x "$(command -v podman)" ]]; then
+    alias docker=podman
+fi
+
 # Python
 export WORKON_HOME=$HOME/.virtualenvs
 export PYENV_ROOT="$HOME/.pyenv"
