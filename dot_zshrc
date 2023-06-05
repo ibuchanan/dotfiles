@@ -1,6 +1,6 @@
 LANG=en_US.UTF-8
 GITHUB_USER=ibuchanan
-EDITOR="code"
+EDITOR="code --wait"
 
 # Homebrew
 if [[ "$(uname)" -eq "Darwin" ]]; then
