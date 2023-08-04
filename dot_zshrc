@@ -10,16 +10,17 @@ else
 fi
 if [[ -x "$(command -v $BREWCMD)" ]]; then
     eval $($BREWCMD shellenv)
+    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
 # Pip --user commands
 if [[ -d "$HOME/.local/bin" ]]; then
-    export PATH=$HOME/.local/bin:$PATH
+    export PATH="$HOME/.local/bin:$PATH"
 fi
 
 # Personal commands
 if [[ -d "$HOME/bin" ]]; then
-    export PATH=$HOME/bin:$PATH
+    export PATH="$HOME/bin:$PATH"
 fi
 
 # Lastpass & secrets
@@ -59,6 +60,7 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PYENV_ROOT="$HOME/.pyenv"
 if [[ -d "$PYENV_ROOT" ]]; then
     export CFLAGS='-O2'
+    # Default to brew installed libraries for building Python
     export LDFLAGS="-L$(brew --prefix)/opt/zlib/lib -L$(brew --prefix)/opt/bzip2/lib -L$(brew --prefix)/opt/sqlite3/lib"
     export CPPFLAGS="-I$(brew --prefix)/opt/zlib/include -I$(brew --prefix)/opt/bzip2/include -I$(brew --prefix)/opt/sqlite3/include"
     PATH="$PYENV_ROOT/bin:$PATH"
@@ -68,7 +70,7 @@ if [[ -d "$PYENV_ROOT" ]]; then
 fi
 # Path for brew pip
 if [[ -d "$(brew --prefix)/share/python" ]]; then
-    export PATH=$PATH:$(brew --prefix)/share/python
+    export PATH="$PATH:$(brew --prefix)/share/python"
 fi
 
 # Java
@@ -79,8 +81,13 @@ fi
 # Ruby
 export RBENV_HOME="$HOME/.rbenv"
 if [[ -d "$RBENV_HOME" ]]; then
-	export PATH=$RBENV_HOME/bin:$PATH
+	export PATH="$RBENV_HOME/bin:$PATH"
 	eval "$(rbenv init -)"
+fi
+
+# Rust
+if [[ -d ~/.cargo/bin ]]; then
+    export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
 # Go
