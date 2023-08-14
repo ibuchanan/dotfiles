@@ -51,7 +51,8 @@ fi
 
 # Docker (via Podman)
 if [[ -x "$(command -v podman)" ]]; then
-    alias docker=podman
+    # alias docker=podman
+    # Commented out in favor of symlink to trick node for Forge
     export DOCKER_HOST="unix://$HOME/.local/share/containers/podman/machine/qemu/podman.sock"
 fi
 
@@ -106,7 +107,8 @@ if [[ -d ~/.gvm ]]; then
 fi
 
 # Node
-export NODE_ENV=development
+# export NODE_ENV=development
+# Forge doesn't like this
 export NVM_DIR="$HOME/.nvm"
 if [[ -d "$NVM_DIR" ]] && [[ -x "$(command -v nvm)" ]]; then
     source $(brew --prefix nvm)/nvm.sh
