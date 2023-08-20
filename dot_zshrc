@@ -39,7 +39,7 @@ if [[ -x "$(command -v lpass)" ]]; then
     export ATLASSIAN_APP_NAME=$(shuf -n1  /usr/share/dict/words)-$(shuf -n1  /usr/share/dict/words)-$(shuf -n1  /usr/share/dict/words)
     export ATLASSIAN_APP_ID=$(uuidgen)
     export ATLASSIAN_APP_CONNECT_PORT=
-    export ATLASSIAN_APP_CONNECT_BASE_URL=https://${export ATLASSIAN_APP_NAME}.example.com/
+    export ATLASSIAN_APP_CONNECT_BASE_URL=https://${ATLASSIAN_APP_NAME}.example.com/
     export ATLASSIAN_ORGANIZATION_ID=$(lpass show ".env\\${LPASS_ENV}/organization" --username)
     export ATLASSIAN_ORGANIZATION_BEARER=$(lpass show ".env\\${LPASS_ENV}/organization" --password)
     export ATLASSIAN_SITE_NAME=$(lpass show ".env\\${LPASS_ENV}/site" --field="name")
