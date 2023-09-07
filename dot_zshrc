@@ -49,11 +49,12 @@ if [[ -x "$(command -v lpass)" ]]; then
     export ATLASSIAN_SITE_BASIC_PASS=$(lpass show ".env\\${LPASS_ENV}/site" --password)
 fi
 
-# Docker (via Podman)
-if [[ -x "$(command -v podman)" ]]; then
-    alias docker=podman
-    export DOCKER_HOST="unix://$HOME/.local/share/containers/podman/machine/qemu/podman.sock"
-fi
+# Docker via Podman
+# Not compatible with Atlassian toolchain :(
+# if [[ -x "$(command -v podman)" ]]; then
+#     alias docker=podman
+#     export DOCKER_HOST="unix://$HOME/.local/share/containers/podman/machine/qemu/podman.sock"
+# fi
 
 # Python
 export WORKON_HOME=$HOME/.virtualenvs
