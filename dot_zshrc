@@ -51,8 +51,7 @@ fi
 
 # Docker (via Podman)
 if [[ -x "$(command -v podman)" ]]; then
-    # alias docker=podman
-    # Commented out in favor of symlink to trick node for Forge
+    alias docker=podman
     export DOCKER_HOST="unix://$HOME/.local/share/containers/podman/machine/qemu/podman.sock"
 fi
 
