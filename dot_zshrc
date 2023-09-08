@@ -3,7 +3,7 @@ GITHUB_USER=ibuchanan
 EDITOR="code --wait"
 
 # Homebrew
-if [[ "$(uname)" -eq "Darwin" ]]; then
+if [[ "$(uname)" = "Darwin" ]]; then
     BREWCMD=/opt/homebrew/bin/brew       
 else
     BREWCMD=/home/linuxbrew/.linuxbrew/bin/brew
