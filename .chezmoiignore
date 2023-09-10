@@ -1,0 +1,8 @@
+{{ if eq .chezmoi.os "darwin" }}
+# darwin
+.gitconfig
+{{ else if eq .chezmoi.os "linux" }}
+# linux
+{{ else }}
+# other operating system
+{{ end }}
