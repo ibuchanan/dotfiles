@@ -129,8 +129,8 @@ export STARSHIP_CONFIG=~/.starship.toml
 if [[ -x "$(command -v starship)" ]]; then
     eval "$(starship init zsh)"
 fi
-if [[ -x "$(command -v neofetch)" ]]; then
-    neofetch
+if [[ -x "$(command -v fastfetch)" ]]; then
+    fastfetch
 fi
 
 
