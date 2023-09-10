@@ -24,6 +24,7 @@ if [[ -d "$HOME/bin" ]]; then
 fi
 
 # Lastpass & secrets
+# brew install lastpass-cli
 if [[ -x "$(command -v lpass)" ]]; then
     LPASS_AGENT_TIMEOUT=$(( 12 * 60 * 60 ))
     ## Atlassian Developer Environment
@@ -57,6 +58,7 @@ fi
 # fi
 
 # Python
+# brew install pyenv zlib sqlite
 export WORKON_HOME=$HOME/.virtualenvs
 export PYENV_ROOT="$HOME/.pyenv"
 if [[ -d "$PYENV_ROOT" ]]; then
@@ -75,6 +77,8 @@ if [[ -d "$(brew --prefix)/share/python" ]]; then
 fi
 
 # Java
+# brew install jenv
+# brew install openjdk
 if [[ -x "$(command -v jenv)" ]]; then
     # export PATH="$HOME/.jenv/bin:$PATH"
     eval "$(jenv init -)"
@@ -113,12 +117,14 @@ export NVM_DIR="$HOME/.nvm"
 if [[ -d "$NVM_DIR" ]] && [[ -x "$(command -v nvm)" ]]; then
     source $(brew --prefix nvm)/nvm.sh
 fi
+# brew install fnm
 export FNM_DIR="$HOME/.fnm"
 if [[ -d "$FNM_DIR" ]] && [[ -x "$(command -v fnm)" ]]; then
     eval "$(fnm env --use-on-cd)"
 fi
 
 # Prompt
+# brew install starship
 export STARSHIP_CONFIG=~/.starship.toml
 if [[ -x "$(command -v starship)" ]]; then
     eval "$(starship init zsh)"
@@ -129,6 +135,7 @@ fi
 
 
 # Zinit
+# brew install zinit
 if [[ -f "$(brew --prefix)/opt/zinit/zinit.zsh" ]]; then
     source "$(brew --prefix)/opt/zinit/zinit.zsh"
     autoload -Uz _zinit
