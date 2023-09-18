@@ -4,7 +4,7 @@ EDITOR="code --wait"
 
 # Homebrew
 if [[ "$(uname)" = "Darwin" ]]; then
-    BREWCMD=/opt/homebrew/bin/brew       
+    BREWCMD=/opt/homebrew/bin/brew
 else
     BREWCMD=/home/linuxbrew/.linuxbrew/bin/brew
 fi
@@ -152,6 +152,7 @@ if [[ -f "$(brew --prefix)/opt/zinit/zinit.zsh" ]]; then
 
     # Load plugins
     zinit load DarrinTisdale/zsh-aliases-exa
+    zinit load zsh-users/gitfast
     zinit load zsh-users/zsh-syntax-highlighting
     zinit load zsh-users/zsh-completions
     zinit load zsh-users/zsh-autosuggestions
