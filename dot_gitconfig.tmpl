@@ -18,5 +18,18 @@
 	defaultBranch = main
 [credential]
 	helper = /usr/local/share/gcm-core/git-credential-manager
+	{{ if eq .chezmoi.os "darwin" }}
+	# macos
+	credentialStore = keychain
+	{{ else if eq .chezmoi.os "linux" }}
+	# linux
+	credentialStore = secretservice
+	{{ else if eq .chezmoi.os "windows" }}
+	# windows
+	credentialStore = wincredman
+	.gitconfig
+	{{ else }}
+	# some other operating system?
+	{{ end }}
 [credential "https://dev.azure.com"]
 	useHttpPath = true
