@@ -17,15 +17,17 @@
 [init]
 	defaultBranch = main
 [credential]
-	helper = /usr/local/share/gcm-core/git-credential-manager
 	{{ if eq .chezmoi.os "darwin" }}
 	# macos
+	helper = /usr/local/share/gcm-core/git-credential-manager
 	credentialStore = keychain
 	{{ else if eq .chezmoi.os "linux" }}
 	# linux
+	helper = {{.chezmoi.homeDir}}/.dotnet/tools/git-credential-manager
 	credentialStore = secretservice
 	{{ else if eq .chezmoi.os "windows" }}
 	# windows
+	helper = {{.chezmoi.homeDir}}/.dotnet/tools/git-credential-manager
 	credentialStore = wincredman
 	.gitconfig
 	{{ else }}
