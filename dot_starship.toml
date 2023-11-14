@@ -3,7 +3,7 @@
 # DEBUG via: `starship explain`
 
 # Timeout for commands executed by starship (ms)
-command_timeout = 1000
+command_timeout = 2000
 
 [time]
 disabled = false
