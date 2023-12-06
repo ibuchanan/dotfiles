@@ -1,6 +1,6 @@
-LANG=en_US.UTF-8
-GITHUB_USER=ibuchanan
-EDITOR="code --wait"
+export LANG=en_US.UTF-8
+export GITHUB_USER=ibuchanan
+export EDITOR="code --wait"
 
 # Homebrew
 if [[ "$(uname)" = "Darwin" ]]; then
@@ -10,7 +10,7 @@ else
 fi
 if [[ -x "$(command -v $BREWCMD)" ]]; then
     eval $($BREWCMD shellenv)
-    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+    export FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
 # Pip --user commands
@@ -48,6 +48,8 @@ if [[ -x "$(command -v lpass)" ]]; then
     export ATLASSIAN_SITE_CLOUD_ID=$(lpass show ".env\\${LPASS_ENV}/site" --field="id")
     export ATLASSIAN_SITE_BASIC_USER=$(lpass show ".env\\${LPASS_ENV}/site" --username)
     export ATLASSIAN_SITE_BASIC_PASS=$(lpass show ".env\\${LPASS_ENV}/site" --password)
+    export FORGE_EMAIL="$ATLASSIAN_ACCOUNT_EMAIL"
+    export FORGE_EMAIL="$ATLASSIAN_ACCOUNT_API_KEY"
 fi
 
 # Docker via Podman
@@ -66,7 +68,7 @@ if [[ -d "$PYENV_ROOT" ]]; then
     # Default to brew installed libraries for building Python
     export LDFLAGS="-L$(brew --prefix)/opt/zlib/lib -L$(brew --prefix)/opt/bzip2/lib -L$(brew --prefix)/opt/sqlite3/lib"
     export CPPFLAGS="-I$(brew --prefix)/opt/zlib/include -I$(brew --prefix)/opt/bzip2/include -I$(brew --prefix)/opt/sqlite3/include"
-    PATH="$PYENV_ROOT/bin:$PATH"
+    export PATH="$PYENV_ROOT/bin:$PATH"
     if [[ -x "$(command -v pyenv)" ]]; then
         eval "$(pyenv init -)"
     fi
