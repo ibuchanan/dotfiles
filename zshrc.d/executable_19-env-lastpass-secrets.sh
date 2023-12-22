@@ -25,4 +25,5 @@ if [[ -x "$(command -v lpass)" ]]; then
     export ATLASSIAN_SITE_CLOUD_ID=$(lpass show ".env\\${LPASS_ENV}/site" --field="id")
     export ATLASSIAN_SITE_BASIC_USER=$(lpass show ".env\\${LPASS_ENV}/site" --username)
     export ATLASSIAN_SITE_BASIC_PASS=$(lpass show ".env\\${LPASS_ENV}/site" --password)
+    export NGROK_AUTHTOKEN=$(lpass show ".env\\${LPASS_ENV}/ngrok" --password)
 fi
