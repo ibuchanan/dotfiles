@@ -7,6 +7,6 @@ else
     BREWCMD=/home/linuxbrew/.linuxbrew/bin/brew
 fi
 if [[ -x "$(command -v $BREWCMD)" ]]; then
-    eval $($BREWCMD shellenv)
+    eval "$($BREWCMD shellenv)"
     FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
