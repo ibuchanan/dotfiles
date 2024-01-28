@@ -6,9 +6,6 @@
 
 JAVACMD="$(brew --prefix openjdk)/bin/java"
 if [[ -x "$(command -v "$JAVACMD")" ]]; then
-    # $ brew install openjdk
-    # $ jenv add $(brew --prefix)/opt/openjdk
-    # $ $(brew --prefix openjdk)/bin/java --version | xargs --verbose bash -c 'jenv global $1'
     if [[ -x "$(command -v jenv)" ]]; then
         # export PATH="$HOME/.jenv/bin:$PATH"
         eval "$(jenv init -)"
