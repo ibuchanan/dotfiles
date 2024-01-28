@@ -1,4 +1,4 @@
-
+#! /usr/bin/env bash
 # [Atlassian Forge](https://go.atlassian.com/forge)
 # Install
 # cd npm-global && npm install

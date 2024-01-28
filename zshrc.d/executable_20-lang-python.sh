@@ -1,3 +1,4 @@
+#! /usr/bin/env bash
 # Python dev utilities
 # [Pyenv](https://github.com/pyenv/pyenv)
 # Install

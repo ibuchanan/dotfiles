@@ -1,4 +1,5 @@
+#! /usr/bin/env bash
 # [Go](https://go.dev/)
-if [[ -d ~/.gvm ]]; then
-    source ~/.gvm/scripts/gvm
+if [[ -d $HOME/.gvm ]]; then
+    source "$HOME/.gvm/scripts/gvm"
 fi

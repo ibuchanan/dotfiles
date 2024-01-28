@@ -1,11 +1,12 @@
+#! /usr/bin/env bash
 # Prompt
-GITHUB_USER=ibuchanan
-EDITOR="code --wait"
+export GITHUB_USER=ibuchanan
+export EDITOR="code --wait"
 
 # History
 [ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
-HISTSIZE=100000
-SAVEHIST=$HISTSIZE
+export HISTSIZE=100000
+export SAVEHIST=$HISTSIZE
 setopt extended_history       # record timestamp of command in HISTFILE
 setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
 setopt hist_ignore_all_dups   # ignore duplicated commands history list
@@ -19,7 +20,7 @@ setopt list_ambiguous         # complete as much of a completion until it gets a
 
 # [Starship](https://starship.rs/)
 # brew install starship
-export STARSHIP_CONFIG=~/.starship.toml
+export STARSHIP_CONFIG=$HOME/.starship.toml
 if [[ -x "$(command -v starship)" ]]; then
     eval "$(starship init zsh)"
 fi

@@ -1,3 +1,4 @@
+#! /usr/bin/env bash
 # [Node.js](https://nodejs.org/)
 # export NODE_ENV=development
 # Forge doesn't like NODE_ENV
@@ -14,5 +15,5 @@ fi
 # Works but complains
 export NVM_DIR="$HOME/.nvm"
 if [[ -d "$NVM_DIR" ]] && [[ -x "$(command -v nvm)" ]]; then
-    source $(brew --prefix nvm)/nvm.sh
+    source "$(brew --prefix nvm)/nvm.sh"
 fi

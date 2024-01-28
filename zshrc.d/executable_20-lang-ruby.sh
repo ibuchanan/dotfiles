@@ -1,3 +1,4 @@
+#! /usr/bin/env bash
 # [Ruby](https://www.ruby-lang.org/)
 
 export RBENV_HOME="$HOME/.rbenv"

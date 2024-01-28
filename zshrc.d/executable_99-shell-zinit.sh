@@ -1,3 +1,4 @@
+#! /usr/bin/env zsh
 # [Zinit](https://github.com/zdharma-continuum/zinit)
 # Install
 # brew install zinit
