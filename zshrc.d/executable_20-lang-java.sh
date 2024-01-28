@@ -12,17 +12,8 @@ if [[ -x "$(command -v "$JAVACMD")" ]]; then
     if [[ -x "$(command -v jenv)" ]]; then
         # export PATH="$HOME/.jenv/bin:$PATH"
         eval "$(jenv init -)"
-        # jenv may need to be configured with a global JVM
-        # For example:
-        # $ brew install openjdk
-        # $ jenv add $(brew --prefix)/opt/openjdk
-        # $ $(brew --prefix openjdk)/bin/java --version | xargs bash -c 'jenv global $1'
-
-        # after brew update for openjdk
-        # $ find -L $HOME/.jenv/versions -type d -samefile $(brew --prefix openjdk) -print0 | xargs --null -n1 basename | xargs jenv remove
-        # $ jenv global system
-        # $ jenv add $(brew --prefix openjdk)
-        # $ $(brew --prefix openjdk)/bin/java --version | xargs bash -c 'jenv global $1'
+        # jenv init, via my homegrown brew plugin,
+        # jenv will make sure brew versions get added
     fi
 fi
 
