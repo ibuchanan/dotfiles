@@ -65,6 +65,13 @@ if [[ -x "$(command -v lpass)" ]]; then
     ATLASSIAN_SITE_BASIC_PASS=$(lpass show ".env\\${LPASS_ENV}/site" --password)
     export ATLASSIAN_SITE_BASIC_PASS
 
+    ## Forge specific
+    FORGE_EMAIL=$ATLASSIAN_ACCOUNT_EMAIL
+    export FORGE_EMAIL
+
+    FORGE_API_TOKEN=$ATLASSIAN_ACCOUNT_API_KEY
+    export FORGE_API_TOKEN
+
     NGROK_AUTHTOKEN=$(lpass show ".env\\${LPASS_ENV}/ngrok" --password)
     export NGROK_AUTHTOKEN
 
