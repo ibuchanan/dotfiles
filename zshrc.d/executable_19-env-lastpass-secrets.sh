@@ -7,6 +7,9 @@ if [[ -x "$(command -v lpass)" ]]; then
     LPASS_AGENT_TIMEOUT=$(( 12 * 60 * 60 ))
     export LPASS_AGENT_TIMEOUT
     export LPASS_ENV="devpartisan"
+    ## GitHub
+    GITHUB_TOKEN=$(lpass show ".env\\${LPASS_ENV}/github" --password)
+
     ## Atlassian Developer Environment
     ATLASSIAN_ACCOUNT_EMAIL=$(lpass show ".env\\${LPASS_ENV}/account" --username)
     export ATLASSIAN_ACCOUNT_EMAIL
