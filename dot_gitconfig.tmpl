@@ -22,14 +22,18 @@
 	helper = /usr/local/share/gcm-core/git-credential-manager
 	credentialStore = keychain
 	{{ else if eq .chezmoi.os "linux" }}
+	{{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+	# wsl
+        helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
+	{{   else }}
 	# linux
 	helper = {{.chezmoi.homeDir}}/.dotnet/tools/git-credential-manager
 	credentialStore = secretservice
+	{{   end }}
 	{{ else if eq .chezmoi.os "windows" }}
 	# windows
 	helper = {{.chezmoi.homeDir}}/.dotnet/tools/git-credential-manager
 	credentialStore = wincredman
-	.gitconfig
 	{{ else }}
 	# some other operating system?
 	{{ end }}
