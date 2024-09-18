@@ -1,9 +1,10 @@
 {
-    "name": "npm-global",
-    "version": "0.0.0",
-    "description": "A better way to manage global package that supports node version switching",
-    "scripts": {},
-    "dependencies": {
-        "@forge/cli": "*"
-    }
+  "name": "npm-global",
+  "version": "0.0.0",
+  "description": "A better way to manage global package that supports node version switching",
+  "scripts": {},
+  "dependencies": {
+    "@forge/cli": "*",
+    "knip": "*"
+  }
 }
