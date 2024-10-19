@@ -1,7 +1,5 @@
 #! /usr/bin/env bash
-# Prompt
-export GITHUB_USER=ibuchanan
-export EDITOR="code --wait"
+# Setup for the command prompt
 
 # History
 [ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
