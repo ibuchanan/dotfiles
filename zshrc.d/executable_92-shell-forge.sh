@@ -8,3 +8,6 @@ if [[ -x "$(command -v forge)" ]]; then
     #. <(forge --completion)
     eval "$(forge --completion)"
 fi
+
+export FORGE_BOOTSTRAP_HOME="$HOME/dev/git/github.com/ibuchanan/forge-typescript-bootstrap"
+alias forge-bootstrap="mask --maskfile $FORGE_BOOTSTRAP_HOME/maskfile.md"
