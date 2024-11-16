@@ -5,6 +5,7 @@
   "scripts": {},
   "dependencies": {
     "@forge/cli": "*",
-    "knip": "*"
+    "knip": "*",
+    "tsx": "*"
   }
 }
