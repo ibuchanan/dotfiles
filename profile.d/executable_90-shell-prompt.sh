@@ -28,3 +28,9 @@ fi
 if [[ -x "$(command -v fastfetch)" ]]; then
     fastfetch
 fi
+
+# [macchina](https://github.com/Macchina-CLI/macchina)
+# display machine information on terminal start for context
+if [[ -x "$(command -v macchina)" ]]; then
+    macchina
+fi
