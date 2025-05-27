@@ -39,3 +39,8 @@
 	{{ end }}
 [credential "https://dev.azure.com"]
 	useHttpPath = true
+[trace2]
+	eventTarget = af_unix:{{.chezmoi.homeDir}}/.gittrace/trace.sock
+	eventBrief = true
+	eventNesting = 1
+	configparams = custom.metacommands
