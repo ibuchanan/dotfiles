@@ -1,6 +1,12 @@
 #! /usr/bin/env bash
 # Prepending to the path so last location will be first
 
+# Atlassian Orbit
+# https://hello.atlassian.net/wiki/spaces/Orbit/overview
+if [[ -d "$HOME/.orbit/bin" ]]; then
+    export PATH="$HOME/.orbit/bin:$PATH"
+fi
+
 # npm-global
 # My own approach to better installs than `npm install -g`
 NPM_GLOBAL="$HOME/npm-global"
