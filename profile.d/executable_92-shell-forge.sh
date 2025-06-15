@@ -11,3 +11,4 @@ fi
 
 export FORGE_BOOTSTRAP_HOME="$HOME/dev/git/github.com/ibuchanan/forge-bootstrap"
 alias forge-bootstrap="mask --maskfile $FORGE_BOOTSTRAP_HOME/maskfile.md"
+alias fbs="mask --maskfile $FORGE_BOOTSTRAP_HOME/maskfile.md"
