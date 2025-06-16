@@ -6,7 +6,7 @@
 
 # Additional utilities for helping build Python versions
 # https://github.com/pyenv/pyenv/wiki#suggested-build-environment
-# brew install openssl readline sqlite3 xz zlib tcl-tk
+# brew install openssl readline sqlite3 xz zlib tcl-tk libb2
 # Also recommend brew-installed gcc
 # brew install gcc
 export WORKON_HOME="$HOME/.virtualenvs"
@@ -27,6 +27,6 @@ if [[ -d "$PYENV_ROOT" ]]; then
 
     PATH="$PYENV_ROOT/bin:$PATH"
     if [[ -x "$(command -v pyenv)" ]]; then
-        eval "$(pyenv init -)"
+        eval "$(pyenv init - zsh)"
     fi
 fi

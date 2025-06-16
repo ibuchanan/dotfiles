@@ -8,10 +8,10 @@ if [[ -x "$(command -v lpass)" ]]; then
     export LPASS_AGENT_TIMEOUT
     export LPASS_ENV="devpartisan"
     ## GitHub
-    GITHUB_TOKEN=$(lpass show ".env\\${LPASS_ENV}/github" --password)
+    export GITHUB_TOKEN=$(lpass show ".env\\${LPASS_ENV}/github" --password)
 
     ## Google Gemini
-    GOOGLE_API_KEY=$(lpass show ".env\\${LPASS_ENV}/gemini" --password)
+    export GOOGLE_API_KEY=$(lpass show ".env\\${LPASS_ENV}/gemini" --password)
 
     ## Atlassian Developer Environment
     ATLASSIAN_ACCOUNT_EMAIL=$(lpass show ".env\\${LPASS_ENV}/account" --username)
