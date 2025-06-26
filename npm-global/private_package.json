@@ -7,6 +7,7 @@
     "@forge/cli": "*",
     "knip": "*",
     "promptfoo": "*",
+    "sort-package-json": "*",
     "tsx": "*",
     "yarn": "*"
   }
