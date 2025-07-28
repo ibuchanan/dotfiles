@@ -18,9 +18,9 @@ if [[ -f "$(brew --prefix)/opt/zinit/zinit.zsh" ]]; then
     ### End of Zinit's installer chunk
 
     # Load plugins
-    zinit load atuinsh/atuin
-    zinit load zsh-users/zsh-syntax-highlighting
-    zinit load zsh-users/zsh-completions
-    zinit load zsh-users/zsh-autosuggestions
+    zinit light atuinsh/atuin
+    zinit light zsh-users/zsh-syntax-highlighting
+    zinit light zsh-users/zsh-completions
+    zinit light zsh-users/zsh-autosuggestions
     zinit snippet OMZ::plugins/command-not-found
 fi
