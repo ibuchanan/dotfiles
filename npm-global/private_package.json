@@ -5,10 +5,11 @@
   "scripts": {},
   "dependencies": {
     "@forge/cli": "*",
+    "corepack": "*",
     "knip": "*",
     "promptfoo": "*",
     "sort-package-json": "*",
     "tsx": "*",
-    "yarn": "*"
+    "turbo": "*"
   }
 }
