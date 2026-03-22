@@ -18,7 +18,9 @@ fi
 # pip --user
 # uv python install --default
 if [[ -d "$HOME/.local/bin" ]]; then
-    export PATH="$HOME/.local/bin:$PATH"
+    PATH="$HOME/.local/bin:$PATH"
+    export PATH
+    . "$HOME/.local/bin/env"
 fi
 
 # Personal commands
