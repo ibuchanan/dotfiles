@@ -23,4 +23,9 @@ if [[ -f "$(brew --prefix)/opt/zinit/zinit.zsh" ]]; then
     zinit light zsh-users/zsh-completions
     zinit light zsh-users/zsh-autosuggestions
     zinit snippet OMZ::plugins/command-not-found
+elif [[ -d $HOME/.oh-my-zsh ]]; then
+    # Autosuggestions
+    source $HOME/.oh-my-zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+    bindkey "^[[A" history-beginning-search-backward
+    bindkey "^[[B" history-beginning-search-forward
 fi
