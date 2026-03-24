@@ -3,8 +3,8 @@
 # Install
 # brew install lm-studio
 
-LMSCMD="$(brew --prefix lm-studio)/bin/lms"
-if [[ -x "$(command -v "$LMSCMD")" ]]; then
-    PATH="$PATH:$(brew --prefix lm-studio)/bin"
+LMSHOME="$HOME/.lmstudio/"
+if [[ -x "$(command -v "$LMSHOME/bin/lms")" ]]; then
+    PATH="$PATH:$LMSHOME/bin"
     export PATH
 fi
