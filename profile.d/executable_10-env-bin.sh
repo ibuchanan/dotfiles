@@ -20,7 +20,9 @@ fi
 if [[ -d "$HOME/.local/bin" ]]; then
     PATH="$HOME/.local/bin:$PATH"
     export PATH
-    . "$HOME/.local/bin/env"
+    if [[ -f "$HOME/.local/bin/env" ]]; then
+        . "$HOME/.local/bin/env"
+    fi
 fi
 
 # Personal commands
