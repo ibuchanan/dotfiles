@@ -7,11 +7,6 @@ if [[ -x "$(command -v lpass)" ]]; then
     LPASS_AGENT_TIMEOUT=$(( 12 * 60 * 60 ))
     export LPASS_AGENT_TIMEOUT
     export LPASS_ENV="devpartisan"
-    ## GitHub
-    export GITHUB_TOKEN=$(lpass show ".env\\${LPASS_ENV}/github" --password)
-
-    ## Google Gemini
-    export GOOGLE_API_KEY=$(lpass show ".env\\${LPASS_ENV}/gemini" --password)
 
     ## Atlassian Developer Environment
     ATLASSIAN_ACCOUNT_EMAIL=$(lpass show ".env\\${LPASS_ENV}/account" --username)
@@ -56,14 +51,8 @@ if [[ -x "$(command -v lpass)" ]]; then
     ATLASSIAN_ORGANIZATION_BEARER=$(lpass show ".env\\${LPASS_ENV}/organization" --password)
     export ATLASSIAN_ORGANIZATION_BEARER
 
-    ATLASSIAN_SITE_NAME=$(lpass show ".env\\${LPASS_ENV}/site" --field="name")
-    export ATLASSIAN_SITE_NAME
-
     ATLASSIAN_SITE_BASE_URL=$(lpass show ".env\\${LPASS_ENV}/site" --url)
     export ATLASSIAN_SITE_BASE_URL
-
-    ATLASSIAN_SITE_CLOUD_ID=$(lpass show ".env\\${LPASS_ENV}/site" --field="id")
-    export ATLASSIAN_SITE_CLOUD_ID
 
     ATLASSIAN_SITE_BASIC_USER=$(lpass show ".env\\${LPASS_ENV}/site" --username)
     export ATLASSIAN_SITE_BASIC_USER
@@ -78,7 +67,32 @@ if [[ -x "$(command -v lpass)" ]]; then
     FORGE_API_TOKEN=$ATLASSIAN_ACCOUNT_API_KEY
     export FORGE_API_TOKEN
 
+    ## Web tunneling
     NGROK_AUTHTOKEN=$(lpass show ".env\\${LPASS_ENV}/ngrok" --password)
     export NGROK_AUTHTOKEN
+
+    ## LLM services
+    OPENROUTER_API_KEY=$(lpass show ".env\\${LPASS_ENV}/finops" --password)
+    export OPENROUTER_API_KEY
+    OPENAI_API_KEY=$(lpass show ".env\\${LPASS_ENV}/llm-experiments" --password)
+    export OPENAI_API_KEY
+
+    ## MCP services
+    CONTEXT7_API_KEY=$(lpass show ".env\\${LPASS_ENV}/context7" --password)
+    export CONTEXT7_API_KEY
+
+    ## Search providers for websearch
+    TAVILY_API_KEY=$(lpass show ".env\\${LPASS_ENV}/tavily" --password)
+    export TAVILY_API_KEY
+    EXA_API_KEY=$(lpass show ".env\\${LPASS_ENV}/exa.ai" --password)
+    export EXA_API_KEY
+    BRAVE_API_KEY=$(lpass show ".env\\${LPASS_ENV}/search.brave.com" --password)
+    export BRAVE_API_KEY
+
+    ## GitHub
+    export GITHUB_TOKEN=$(lpass show ".env\\${LPASS_ENV}/github" --password)
+
+    ## Google Gemini
+    export GOOGLE_API_KEY=$(lpass show ".env\\${LPASS_ENV}/gemini" --password)
 
 fi
