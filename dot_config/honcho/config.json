@@ -1,0 +1,17 @@
+{
+  "hosts": {
+    "hermes": {
+      "peerName": "ibuchanan",
+      "workspace": "hermes",
+      "aiPeer": "hermes",
+      "memoryMode": "hybrid",
+      "writeFrequency": "async",
+      "recallMode": "hybrid",
+      "sessionStrategy": "per-directory",
+      "enabled": true,
+      "saveMessages": true
+    }
+  },
+  "baseUrl": "http://127.0.0.1:8000",
+  "apiKey": "no-api-key-needed"
+}
