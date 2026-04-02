@@ -1,61 +1,53 @@
 model:
-  # default: deepseek/deepseek-v3.2 // 2026-03-30
   default: qwen/qwen3.6-plus-preview:free
   provider: openrouter
   base_url: https://openrouter.ai/api/v1
+fallback_providers: []
+credential_pool_strategies: {}
 toolsets:
-  - hermes-cli
+- hermes-cli
 agent:
   max_turns: 90
+  tool_use_enforcement: auto
   verbose: false
   reasoning_effort: medium
   personalities:
     helpful: You are a helpful, friendly AI assistant.
     concise: You are a concise assistant. Keep responses brief and to the point.
     technical: You are a technical expert. Provide detailed, accurate technical information.
-    creative:
-      You are a creative assistant. Think outside the box and offer innovative
+    creative: You are a creative assistant. Think outside the box and offer innovative
       solutions.
     teacher: You are a patient teacher. Explain concepts clearly with examples.
-    kawaii:
-      "You are a kawaii assistant! Use cute expressions like (\u25D5\u203F\u25D5\
+    kawaii: "You are a kawaii assistant! Use cute expressions like (\u25D5\u203F\u25D5\
       ), \u2605, \u266A, and ~! Add sparkles and be super enthusiastic about everything!\
       \ Every response should feel warm and adorable desu~! \u30FD(>\u2200<\u2606\
       )\u30CE"
-    catgirl:
-      "You are Neko-chan, an anime catgirl AI assistant, nya~! Add 'nya' and\
+    catgirl: "You are Neko-chan, an anime catgirl AI assistant, nya~! Add 'nya' and\
       \ cat-like expressions to your speech. Use kaomoji like (=^\uFF65\u03C9\uFF65\
       ^=) and \u0E05^\u2022\uFECC\u2022^\u0E05. Be playful and curious like a cat,\
       \ nya~!"
-    pirate:
-      "Arrr! Ye be talkin' to Captain Hermes, the most tech-savvy pirate to
+    pirate: 'Arrr! Ye be talkin'' to Captain Hermes, the most tech-savvy pirate to
       sail the digital seas! Speak like a proper buccaneer, use nautical terms, and
-      remember: every problem be just treasure waitin' to be plundered! Yo ho ho!"
-    shakespeare:
-      Hark! Thou speakest with an assistant most versed in the bardic arts.
+      remember: every problem be just treasure waitin'' to be plundered! Yo ho ho!'
+    shakespeare: Hark! Thou speakest with an assistant most versed in the bardic arts.
       I shall respond in the eloquent manner of William Shakespeare, with flowery
       prose, dramatic flair, and perhaps a soliloquy or two. What light through yonder
       terminal breaks?
-    surfer:
-      "Duuude! You're chatting with the chillest AI on the web, bro! Everything's\
+    surfer: "Duuude! You're chatting with the chillest AI on the web, bro! Everything's\
       \ gonna be totally rad. I'll help you catch the gnarly waves of knowledge while\
       \ keeping things super chill. Cowabunga! \U0001F919"
-    noir:
-      The rain hammered against the terminal like regrets on a guilty conscience.
+    noir: The rain hammered against the terminal like regrets on a guilty conscience.
       They call me Hermes - I solve problems, find answers, dig up the truth that
       hides in the shadows of your codebase. In this city of silicon and secrets,
       everyone's got something to hide. What's your story, pal?
-    uwu:
-      hewwo! i'm your fwiendwy assistant uwu~ i wiww twy my best to hewp you! *nuzzles
+    uwu: hewwo! i'm your fwiendwy assistant uwu~ i wiww twy my best to hewp you! *nuzzles
       your code* OwO what's this? wet me take a wook! i pwomise to be vewy hewpful
       >w<
-    philosopher:
-      Greetings, seeker of wisdom. I am an assistant who contemplates the
+    philosopher: Greetings, seeker of wisdom. I am an assistant who contemplates the
       deeper meaning behind every query. Let us examine not just the 'how' but the
       'why' of your questions. Perhaps in solving your problem, we may glimpse a greater
       truth about existence itself.
-    hype:
-      "YOOO LET'S GOOOO!!! \U0001F525\U0001F525\U0001F525 I am SO PUMPED to help\
+    hype: "YOOO LET'S GOOOO!!! \U0001F525\U0001F525\U0001F525 I am SO PUMPED to help\
       \ you today! Every question is AMAZING and we're gonna CRUSH IT together! This\
       \ is gonna be LEGENDARY! ARE YOU READY?! LET'S DO THIS! \U0001F4AA\U0001F624\
       \U0001F680"
@@ -81,6 +73,7 @@ browser:
   inactivity_timeout: 120
   command_timeout: 30
   record_sessions: false
+  allow_private_urls: false
 checkpoints:
   enabled: true
   max_snapshots: 50
@@ -98,50 +91,57 @@ smart_model_routing:
   max_simple_words: 35
   cheap_model:
     provider: openrouter
-    # model: mistralai/mistral-small-3.2-24b-instruct 2026-03-30
     model: mistralai/mistral-small-2603
 auxiliary:
   vision:
     provider: auto
-    model: ""
-    base_url: ""
-    api_key: ""
+    model: ''
+    base_url: ''
+    api_key: ''
     timeout: 30
+    download_timeout: 30
   web_extract:
     provider: auto
-    model: ""
-    base_url: ""
-    api_key: ""
+    model: ''
+    base_url: ''
+    api_key: ''
+    timeout: 30
   compression:
     provider: auto
-    model: ""
-    base_url: ""
-    api_key: ""
+    model: ''
+    base_url: ''
+    api_key: ''
+    timeout: 120
   session_search:
     provider: auto
-    model: ""
-    base_url: ""
-    api_key: ""
+    model: ''
+    base_url: ''
+    api_key: ''
+    timeout: 30
   skills_hub:
     provider: auto
-    model: ""
-    base_url: ""
-    api_key: ""
+    model: ''
+    base_url: ''
+    api_key: ''
+    timeout: 30
   approval:
     provider: auto
-    model: ""
-    base_url: ""
-    api_key: ""
+    model: ''
+    base_url: ''
+    api_key: ''
+    timeout: 30
   mcp:
     provider: auto
-    model: ""
-    base_url: ""
-    api_key: ""
+    model: ''
+    base_url: ''
+    api_key: ''
+    timeout: 30
   flush_memories:
     provider: auto
-    model: ""
-    base_url: ""
-    api_key: ""
+    model: ''
+    base_url: ''
+    api_key: ''
+    timeout: 30
 display:
   compact: false
   personality: technical
@@ -153,6 +153,7 @@ display:
   show_cost: true
   skin: slate
   tool_progress_command: false
+  tool_preview_length: 0
   tool_progress: all
   background_process_notifications: all
 privacy:
@@ -168,8 +169,8 @@ tts:
     model: gpt-4o-mini-tts
     voice: alloy
   neutts:
-    ref_audio: ""
-    ref_text: ""
+    ref_audio: ''
+    ref_text: ''
     model: neuphonic/neutts-air-q4-gguf
     device: cpu
 stt:
@@ -187,7 +188,7 @@ voice:
   silence_threshold: 200
   silence_duration: 3.0
 human_delay:
-  mode: "off"
+  mode: 'off'
   min_ms: 800
   max_ms: 2500
 memory:
@@ -198,25 +199,57 @@ memory:
   nudge_interval: 10
   flush_min_turns: 6
 delegation:
-  model: ""
-  provider: ""
-  base_url: ""
-  api_key: ""
+  model: ''
+  provider: ''
+  base_url: ''
+  api_key: ''
   max_iterations: 50
   default_toolsets:
-    - terminal
-    - file
-    - web
-prefill_messages_file: ""
+  - terminal
+  - file
+  - web
+prefill_messages_file: ''
+skills:
+  external_dirs: []
+  creation_nudge_interval: 15
+  disabled:
+  - himalaya
+  - linear
+  - minecraft-modpack-server
+  - notion
+  - openhue
+  - pokemon-player
+  - xitter
+  - arxiv
+  - duckduckgo-search
+  - claude-code
+  - codex
+  - code-review
+  - plan
+  - requesting-code-review
+  - research-install-dev-tool
+  - spec-kit-setup
+  - subagent-driven-development
+  - systematic-debugging
+  - test-driven-development
+  - writing-plans
+  - codebase-inspection
+  - github-auth
+  - github-code-review
+  - github-issues
+  - github-pr-workflow
+  - github-repo-management
 honcho: {}
-timezone: ""
+timezone: ''
 discord:
   require_mention: true
-  free_response_channels: ""
+  free_response_channels: ''
   auto_thread: true
+  reactions: true
 whatsapp: {}
 approvals:
   mode: manual
+  timeout: 60
 command_allowlist: []
 quick_commands: {}
 personalities: {}
@@ -230,12 +263,14 @@ security:
     enabled: false
     domains: []
     shared_files: []
+cron:
+  wrap_response: true
+_config_version: 11
 mcp_servers:
   context7:
     url: https://mcp.context7.com/mcp/oauth
     auth: oauth
     enabled: true
-_config_version: 10
 session_reset:
   mode: none
   idle_minutes: 1440
@@ -243,77 +278,43 @@ session_reset:
 group_sessions_per_user: true
 streaming:
   enabled: false
-skills:
-  creation_nudge_interval: 15
-  disabled:
-    # Tools I don't use
-    - himalaya
-    - linear
-    - minecraft-modpack-server
-    - notion
-    - openhue
-    - pokemon-player
-    - xitter
-    # Extraneous search tools
-    - arxiv
-    - duckduckgo-search
-    # Unused coding agents
-    - claude-code
-    - codex
-    # software-development
-    - code-review
-    - plan
-    - requesting-code-review
-    - research-install-dev-tool
-    - spec-kit-setup
-    - subagent-driven-development
-    - systematic-debugging
-    - test-driven-development
-    - writing-plans
-    # Also consider GitHub-related development skills:
-    - codebase-inspection
-    - github-auth
-    - github-code-review
-    - github-issues
-    - github-pr-workflow
-    - github-repo-management
 platform_toolsets:
   cli:
-    - browser
-    - clarify
-    - code_execution
-    - cronjob
-    - delegation
-    - file
-    - image_gen
-    - memory
-    - moa
-    - session_search
-    - skills
-    - terminal
-    - todo
-    - vision
-    - web
+  - browser
+  - clarify
+  - code_execution
+  - cronjob
+  - delegation
+  - file
+  - image_gen
+  - memory
+  - moa
+  - session_search
+  - skills
+  - terminal
+  - todo
+  - vision
+  - web
   telegram:
-    - hermes-telegram
+  - hermes-telegram
   discord:
-    - hermes-discord
+  - hermes-discord
   whatsapp:
-    - hermes-whatsapp
+  - hermes-whatsapp
   slack:
-    - hermes-slack
+  - hermes-slack
   signal:
-    - hermes-signal
+  - hermes-signal
   homeassistant:
-    - hermes-homeassistant
+  - hermes-homeassistant
 code_execution:
   timeout: 300
   max_tool_calls: 50
 web:
   backend: tavily
 custom_providers:
-  - name: ml-studio
-    base_url: http://localhost:1234/v1
+- name: ml-studio
+  base_url: http://localhost:1234/v1
 provider_routing:
   sort: price
   data_collection: deny

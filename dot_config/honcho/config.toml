@@ -51,7 +51,7 @@ PROFILES_SAMPLE_RATE = 0.1
 # LLM settings
 [llm]
 DEFAULT_MAX_TOKENS = 2500
-EMBEDDING_PROVIDER = "openai"
+EMBEDDING_PROVIDER = "openrouter"
 MAX_TOOL_OUTPUT_CHARS = 10000  # Max chars for tool output (~2500 tokens)
 MAX_MESSAGE_CONTENT_CHARS = 2000  # Max chars per message in tool results
 
@@ -74,11 +74,16 @@ WORKERS = 1
 POLLING_SLEEP_INTERVAL_SECONDS = 1.0
 STALE_SESSION_TIMEOUT_MINUTES = 5
 # QUEUE_ERROR_RETENTION_SECONDS = 2592000  # 30 days
-PROVIDER = "google"
-MODEL = "gemini-2.5-flash-lite"
 # TEMPERATURE = 0.0
+# PROVIDER = "google"
+# MODEL = "gemini-2.5-flash-lite"
 # BACKUP_PROVIDER = "anthropic"
 # BACKUP_MODEL = "claude-haiku-4-5"
+PROVIDER = "custom"
+MODEL = "qwen/qwen3.5-9b"
+BACKUP_PROVIDER = "google"
+BACKUP_MODEL = "gemini-2.5-flash-lite"
+
 DEDUPLICATE = true
 MAX_OUTPUT_TOKENS = 4096
 THINKING_BUDGET_TOKENS = 1024
@@ -102,55 +107,69 @@ SESSION_HISTORY_MAX_TOKENS = 4096
 # Per-level settings for reasoning levels
 # MAX_OUTPUT_TOKENS is optional per level; if not set, uses global MAX_OUTPUT_TOKENS
 [dialectic.levels.minimal]
-PROVIDER = "google"
-MODEL = "gemini-2.5-flash-lite"
+# PROVIDER = "google"
+# MODEL = "gemini-2.5-flash-lite"
+PROVIDER = "custom"
+MODEL = "qwen/qwen3.5-9b"
 THINKING_BUDGET_TOKENS = 0
 MAX_TOOL_ITERATIONS = 1
 MAX_OUTPUT_TOKENS = 250
 
 [dialectic.levels.low]
-PROVIDER = "google"
-MODEL = "gemini-2.5-flash-lite"
+# PROVIDER = "google"
+# MODEL = "gemini-2.5-flash-lite"
+PROVIDER = "custom"
+MODEL = "qwen/qwen3.5-9b"
 THINKING_BUDGET_TOKENS = 0
 MAX_TOOL_ITERATIONS = 5
 # MAX_OUTPUT_TOKENS = 8192  # Optional: override global default
 
 [dialectic.levels.medium]
-PROVIDER = "anthropic"
-MODEL = "claude-haiku-4-5"
+# PROVIDER = "anthropic"
+# MODEL = "claude-haiku-4-5"
+PROVIDER = "google"
+MODEL = "gemini-3.1-pro-preview"
 THINKING_BUDGET_TOKENS = 1024
 MAX_TOOL_ITERATIONS = 2
 # MAX_OUTPUT_TOKENS = 8192  # Optional: override global default
 
 [dialectic.levels.high]
-PROVIDER = "anthropic"
-MODEL = "claude-haiku-4-5"
+# PROVIDER = "anthropic"
+# MODEL = "claude-haiku-4-5"
+PROVIDER = "google"
+MODEL = "gemini-3.1-pro-preview"
 THINKING_BUDGET_TOKENS = 1024
 MAX_TOOL_ITERATIONS = 4
 # MAX_OUTPUT_TOKENS = 8192  # Optional: override global default
 
 [dialectic.levels.max]
-PROVIDER = "anthropic"
-MODEL = "claude-haiku-4-5"
+# PROVIDER = "anthropic"
+# MODEL = "claude-haiku-4-5"
+PROVIDER = "google"
+MODEL = "gemini-3.1-pro-preview"
 THINKING_BUDGET_TOKENS = 2048
 MAX_TOOL_ITERATIONS = 10
 # MAX_OUTPUT_TOKENS = 8192  # Optional: override global default
 # Backup provider example (optional, must set both or neither):
 # BACKUP_PROVIDER = "google"
 # BACKUP_MODEL = "gemini-2.5-pro"
+BACKUP_PROVIDER = "custom"
+BACKUP_MODEL = "claude-haiku-4-5"
 
 # Summary settings
 [summary]
 ENABLED = true
 MESSAGES_PER_SHORT_SUMMARY = 20
 MESSAGES_PER_LONG_SUMMARY = 60
-PROVIDER = "google"
-MODEL = "gemini-2.5-flash"
+# PROVIDER = "google"
+# MODEL = "gemini-2.5-flash"
+PROVIDER = "custom"
+MODEL = "qwen/qwen3.5-flash-02-23"
 MAX_TOKENS_SHORT = 1000
 MAX_TOKENS_LONG = 4000
 THINKING_BUDGET_TOKENS = 512
-# BACKUP_PROVIDER = "google"
-# BACKUP_MODEL = "gemini-2.5-flash"
+BACKUP_PROVIDER = "google"
+BACKUP_MODEL = "gemini-2.5-flash"
 
 # Dream settings
 [dream]
@@ -159,18 +178,24 @@ DOCUMENT_THRESHOLD = 50
 IDLE_TIMEOUT_MINUTES = 60
 MIN_HOURS_BETWEEN_DREAMS = 8
 ENABLED_TYPES = ["omni"]
-PROVIDER = "anthropic"
-MODEL = "claude-sonnet-4-20250514"
+# PROVIDER = "anthropic"
+# MODEL = "claude-sonnet-4-20250514"
+PROVIDER = "google"
+MODEL = "gemini-3.1-pro-preview"
 MAX_OUTPUT_TOKENS = 16384
 THINKING_BUDGET_TOKENS = 8192
 MAX_TOOL_ITERATIONS = 20
 HISTORY_TOKEN_LIMIT = 16384
 # BACKUP_PROVIDER = "google"
 # BACKUP_MODEL = "gemini-2.5-flash"
+BACKUP_PROVIDER = "custom"
+BACKUP_MODEL = "anthropic/claude-sonnet-4"
 
 # Specialist models (use same provider as main model)
-DEDUCTION_MODEL = "claude-haiku-4-5"
-INDUCTION_MODEL = "claude-haiku-4-5"
+# DEDUCTION_MODEL = "claude-haiku-4-5"
+# INDUCTION_MODEL = "claude-haiku-4-5"
+DUCTION_MODEL = "gemini-3.1-pro-preview"
+INDUCTION_MODEL = "gemini-3.1-pro-preview"
 
 # Surprisal-based sampling subsystem
 [dream.surprisal]
