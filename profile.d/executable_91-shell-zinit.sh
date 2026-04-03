@@ -22,6 +22,7 @@ if [[ -f "$(brew --prefix)/opt/zinit/zinit.zsh" ]]; then
     zinit light zsh-users/zsh-syntax-highlighting
     zinit light zsh-users/zsh-completions
     zinit light zsh-users/zsh-autosuggestions
+    zinit light trystan2k/zsh-tab-title
     zinit snippet OMZ::plugins/command-not-found
 elif [[ -d $HOME/.oh-my-zsh ]]; then
     # Autosuggestions
