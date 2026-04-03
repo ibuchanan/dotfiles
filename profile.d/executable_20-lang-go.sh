@@ -1,5 +1,6 @@
 #! /usr/bin/env bash
 # [Go](https://go.dev/)
-if [[ -d $HOME/.gvm ]]; then
-    source "$HOME/.gvm/scripts/gvm"
+GO_HOME="$HOME/go"
+if [[ -d $GO_HOME ]]; then
+    export PATH="$PATH:$GO_HOME/bin"
 fi
