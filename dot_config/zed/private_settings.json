@@ -25,7 +25,7 @@
   "lsp": {
     "biome": {
       "settings": {
-        "require_config_file": true,
+        "require_config_file": false,
       },
     },
   },

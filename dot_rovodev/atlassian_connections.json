@@ -2,9 +2,8 @@
   "atlassianConnections": {
     "jiraProjects": [
       {
-        "url": "https://one-atlas-gmsy.atlassian.net/browse/AWM",
-        "key": "AWM",
-        "id": "10267"
+        "url": "https://ecosystem-platform.atlassian.net/browse/ESA",
+        "key": "ESA"
       }
     ]
   }

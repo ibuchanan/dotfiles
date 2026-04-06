@@ -1,46 +1,52 @@
-[user]
-	email = ibuchanan@atlassian.com
-	name = Ian Buchanan
-[push]
-	default = simple
 [color]
-	ui = auto
-[hub]
-	protocol = ssh
-[filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-[pull]
-	ff = only
-[init]
-	defaultBranch = main
+        ui = auto
+[core]
+        pager = delta
 [credential]
-	{{ if eq .chezmoi.os "darwin" }}
-	# macos
-	helper = /usr/local/share/gcm-core/git-credential-manager
-	credentialStore = keychain
-	{{ else if eq .chezmoi.os "linux" }}
-	{{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
-	# wsl
+    {{ if eq .chezmoi.os "darwin" }}    # macos
+        credentialStore = keychain
+        helper =
+        helper = /usr/local/share/gcm-core/git-credential-manager
+    {{ else if eq .chezmoi.os "linux" }}
+    {{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}    # wsl
+        helper =
         helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
-	{{   else }}
-	# linux
-	helper = {{.chezmoi.homeDir}}/.dotnet/tools/git-credential-manager
-	credentialStore = secretservice
-	{{   end }}
-	{{ else if eq .chezmoi.os "windows" }}
-	# windows
-	helper = {{.chezmoi.homeDir}}/.dotnet/tools/git-credential-manager
-	credentialStore = wincredman
-	{{ else }}
-	# some other operating system?
-	{{ end }}
+    {{   else }}    # linux
+        credentialStore = secretservice
+        helper =
+        helper = {{.chezmoi.homeDir}}/.dotnet/tools/git-credential-manager
+    {{   end }}
+    {{ else if eq .chezmoi.os "windows" }}    # windows
+        credentialStore = wincredman
+        helper =
+        helper = {{.chezmoi.homeDir}}/.dotnet/tools/git-credential-manager
+    {{ else }}    # some other operating system?
+    {{ end }}
 [credential "https://dev.azure.com"]
-	useHttpPath = true
+        usehttppath = true
+[delta]
+        navigate = true
+        side-by-side = true
+[filter "lfs"]
+        clean = git-lfs clean -- %f
+        process = git-lfs filter-process
+        required = true
+        smudge = git-lfs smudge -- %f
+[hub]
+        protocol = ssh
+[init]
+        defaultbranch = main
+[interactive]
+        difffilter = delta --color-only
+[pull]
+        ff = only
+[push]
+        default = simple
 [trace2]
-	eventTarget = af_unix:{{.chezmoi.homeDir}}/.gittrace/trace.sock
-	eventBrief = true
-	eventNesting = 1
-	configparams = custom.metacommands
+        configparams = custom.metacommands
+        eventbrief = true
+        eventnesting = 1
+        eventtarget = af_unix:/Users/ibuchanan/.gittrace/trace.sock
+[user]
+        email = ibuchanan@atlassian.com
+        name = Ian Buchanan
