@@ -1,0 +1,85 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "autoupdate": true,
+  "permission": {
+    "bash": {
+      "*": "ask",
+      // posix shell: file operations
+      "cat *": "allow",
+      "cp *": "allow",
+      "diff *": "allow",
+      "find *": "allow",
+      "ln *": "allow",
+      "ls *": "allow",
+      "mkdir *": "allow",
+      "mv *": "allow",
+      "pwd *": "allow",
+      "touch *": "allow",
+      // posix shell: text processing
+      "awk *": "allow",
+      "cut *": "allow",
+      "echo *": "allow",
+      "grep *": "allow",
+      "head *": "allow",
+      "sed *": "allow",
+      "sort *": "allow",
+      "tail *": "allow",
+      "uniq *": "allow",
+      "wc *": "allow",
+      // posix shell: shell scripting
+      "basename *": "allow",
+      "dirname *": "allow",
+      "test *": "allow",
+      "xargs *": "allow",
+      // modern shell tools
+      "fd *": "allow",
+      "jq *": "allow",
+      "rg *": "allow",
+      "sd *": "allow",
+      "tree *": "allow",
+      "yq *": "allow",
+      // http
+      "bru *": "allow",
+      "restish *": "allow",
+      "xh *": "allow",
+      // git
+      "git bisect *": "allow",
+      "git blame *": "allow",
+      "git clone *": "allow",
+      "git diff *": "allow",
+      "git grep *": "allow",
+      "git init *": "allow",
+      "git log *": "allow",
+      "git push *": "deny",
+      "git show *": "allow",
+      "git status *": "allow",
+      // python
+      "uv *": "allow",
+      // node
+      "npm run *": "allow",
+      "npm test *": "allow",
+      "knip *": "allow",
+      "sort-package-json *": "allow",
+      "tsx *": "allow",
+      // forge
+      "forge --help": "allow",
+      "forge environments *": "allow",
+      "forge lint *": "allow",
+      "forge logs *": "allow",
+      "forge version *": "allow",
+      "forge whoami *": "allow",
+    },
+  },
+  "mcp": {
+     "forge-knowledge": {
+       "type": "remote",
+       "url": "https://mcp.atlassian.com/v1/forge/mcp",
+       "enabled": true,
+     },
+     "context7": {
+       "type": "remote",
+       "url": "https://mcp.context7.com/mcp/oauth",
+       "enabled": true,
+  },
+   },
+}
