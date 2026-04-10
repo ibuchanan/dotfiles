@@ -7,6 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "disable_ai": false,
   "agent": {
     "default_profile": "ask",
     "model_parameters": [],
@@ -25,7 +26,7 @@
   "lsp": {
     "biome": {
       "settings": {
-        "require_config_file": false,
+        "require_config_file": true,
       },
     },
   },

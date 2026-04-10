@@ -67,6 +67,9 @@ if [[ -x "$(command -v lpass)" ]]; then
     FORGE_API_TOKEN=$ATLASSIAN_ACCOUNT_API_KEY
     export FORGE_API_TOKEN
 
+    ## GitHub
+    export GITHUB_TOKEN=$(lpass show ".env\\${LPASS_ENV}/github" --password)
+
     ## Web tunneling
     NGROK_AUTHTOKEN=$(lpass show ".env\\${LPASS_ENV}/ngrok" --password)
     export NGROK_AUTHTOKEN
@@ -76,10 +79,8 @@ if [[ -x "$(command -v lpass)" ]]; then
     export OPENROUTER_API_KEY
     OPENAI_API_KEY=$(lpass show ".env\\${LPASS_ENV}/llm-experiments" --password)
     export OPENAI_API_KEY
-
-    ## MCP services
-    CONTEXT7_API_KEY=$(lpass show ".env\\${LPASS_ENV}/context7" --password)
-    export CONTEXT7_API_KEY
+    ## Google Gemini
+    export GOOGLE_API_KEY=$(lpass show ".env\\${LPASS_ENV}/gemini" --password)
 
     ## Search providers for websearch
     TAVILY_API_KEY=$(lpass show ".env\\${LPASS_ENV}/tavily" --password)
@@ -89,10 +90,8 @@ if [[ -x "$(command -v lpass)" ]]; then
     BRAVE_API_KEY=$(lpass show ".env\\${LPASS_ENV}/search.brave.com" --password)
     export BRAVE_API_KEY
 
-    ## GitHub
-    export GITHUB_TOKEN=$(lpass show ".env\\${LPASS_ENV}/github" --password)
-
-    ## Google Gemini
-    export GOOGLE_API_KEY=$(lpass show ".env\\${LPASS_ENV}/gemini" --password)
+    ## MCP services
+    CONTEXT7_API_KEY=$(lpass show ".env\\${LPASS_ENV}/context7" --password)
+    export CONTEXT7_API_KEY
 
 fi
