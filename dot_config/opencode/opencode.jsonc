@@ -42,6 +42,8 @@
       "bru *": "allow",
       "restish *": "allow",
       "xh *": "allow",
+      // llm helpers
+      "docling *": "allow",
       // git
       "git bisect *": "allow",
       "git blame *": "allow",

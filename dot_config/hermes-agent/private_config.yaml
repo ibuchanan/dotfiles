@@ -1,5 +1,5 @@
 model:
-  default: google/gemma-4-31b-it
+  default: deepseek/deepseek-chat-v3.1
   provider: openrouter
   base_url: https://openrouter.ai/api/v1
 providers:
@@ -13,6 +13,7 @@ toolsets:
 agent:
   max_turns: 90
   gateway_timeout: 1800
+  service_tier: ''
   tool_use_enforcement: auto
   gateway_timeout_warning: 900
   verbose: false
@@ -94,7 +95,7 @@ compression:
   target_ratio: 0.4
   protect_last_n: 20
   summary_model: qwen/qwen3.5-9b
-  summary_provider: auto
+  summary_provider: openrouter
   summary_base_url: null
 smart_model_routing:
   enabled: true
@@ -102,7 +103,7 @@ smart_model_routing:
   max_simple_words: 35
   cheap_model:
     provider: openrouter
-    model: mistralai/mistral-small-2603
+    model: qwen/qwen3-32b
 auxiliary:
   vision:
     provider: auto
@@ -196,7 +197,6 @@ stt:
     model: whisper-1
   mistral:
     model: voxtral-mini-latest
-  model: whisper-1
 voice:
   record_key: ctrl+b
   max_recording_seconds: 120
@@ -264,6 +264,7 @@ timezone: ''
 discord:
   require_mention: true
   free_response_channels: ''
+  allowed_channels: ''
   auto_thread: true
   reactions: true
 whatsapp: {}
@@ -289,7 +290,7 @@ logging:
   level: INFO
   max_size_mb: 5
   backup_count: 3
-_config_version: 13
+_config_version: 14
 provider_routing:
   sort: price
   data_collection: deny

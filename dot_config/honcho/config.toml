@@ -22,7 +22,7 @@ NAMESPACE = "honcho"
 
 # Database settings
 [db]
-CONNECTION_URI = "postgresql+psycopg://postgres:postgres@localhost:5432/postgres"
+CONNECTION_URI = "postgresql+psycopg://postgres:postgres@localhost:5432/honcho"
 SCHEMA = "public"
 POOL_CLASS = "default"
 POOL_PRE_PING = true
@@ -61,7 +61,8 @@ MAX_MESSAGE_CONTENT_CHARS = 2000  # Max chars per message in tool results
 # OPENAI_COMPATIBLE_API_KEY = "your-api-key"
 # GEMINI_API_KEY = "your-api-key"
 # GROQ_API_KEY = "your-api-key"
-# OPENAI_COMPATIBLE_BASE_URL = "your-base-url"
+OPENAI_COMPATIBLE_BASE_URL = "https://openrouter.ai/api/v1"
+# OPENAI_COMPATIBLE_BASE_URL = "https://openrouter.ai/api/v1"
 
 # Separate vLLM endpoint (for local models)
 # VLLM_API_KEY = "your-api-key"
@@ -75,12 +76,12 @@ POLLING_SLEEP_INTERVAL_SECONDS = 1.0
 STALE_SESSION_TIMEOUT_MINUTES = 5
 # QUEUE_ERROR_RETENTION_SECONDS = 2592000  # 30 days
 # TEMPERATURE = 0.0
-# PROVIDER = "google"
-# MODEL = "gemini-2.5-flash-lite"
-# BACKUP_PROVIDER = "anthropic"
-# BACKUP_MODEL = "claude-haiku-4-5"
+# PROVIDER = "custom"
+# MODEL = "qwen/qwen3-32b"
+# BACKUP_PROVIDER = "google"
+# BACKUP_MODEL = "gemini-2.5-flash-lite"
 PROVIDER = "custom"
-MODEL = "qwen/qwen3.5-9b"
+MODEL = "qwen/qwen3-32b"
 BACKUP_PROVIDER = "google"
 BACKUP_MODEL = "gemini-2.5-flash-lite"
 
@@ -107,64 +108,64 @@ SESSION_HISTORY_MAX_TOKENS = 4096
 # Per-level settings for reasoning levels
 # MAX_OUTPUT_TOKENS is optional per level; if not set, uses global MAX_OUTPUT_TOKENS
 [dialectic.levels.minimal]
-# PROVIDER = "google"
-# MODEL = "gemini-2.5-flash-lite"
+# PROVIDER = "custom"
+# MODEL = "qwen/qwen3-32b"
 PROVIDER = "custom"
-MODEL = "qwen/qwen3.5-9b"
+MODEL = "qwen/qwen3-32b"
 THINKING_BUDGET_TOKENS = 0
 MAX_TOOL_ITERATIONS = 1
 MAX_OUTPUT_TOKENS = 250
 
 [dialectic.levels.low]
-# PROVIDER = "google"
-# MODEL = "gemini-2.5-flash-lite"
+# PROVIDER = "custom"
+# MODEL = "qwen/qwen3-32b"
 PROVIDER = "custom"
-MODEL = "qwen/qwen3.5-9b"
+MODEL = "qwen/qwen3-32b"
 THINKING_BUDGET_TOKENS = 0
 MAX_TOOL_ITERATIONS = 5
 # MAX_OUTPUT_TOKENS = 8192  # Optional: override global default
 
 [dialectic.levels.medium]
-# PROVIDER = "anthropic"
-# MODEL = "claude-haiku-4-5"
-PROVIDER = "google"
-MODEL = "gemini-3.1-pro-preview"
+# PROVIDER = "custom"
+# MODEL = "qwen/qwen-2.5-72b-instruct"
+PROVIDER = "custom"
+MODEL = "qwen/qwen-2.5-72b-instruct"
 THINKING_BUDGET_TOKENS = 1024
 MAX_TOOL_ITERATIONS = 2
 # MAX_OUTPUT_TOKENS = 8192  # Optional: override global default
 
 [dialectic.levels.high]
-# PROVIDER = "anthropic"
-# MODEL = "claude-haiku-4-5"
-PROVIDER = "google"
-MODEL = "gemini-3.1-pro-preview"
+# PROVIDER = "custom"
+# MODEL = "qwen/qwen-2.5-72b-instruct"
+PROVIDER = "custom"
+MODEL = "qwen/qwen-2.5-72b-instruct"
 THINKING_BUDGET_TOKENS = 1024
 MAX_TOOL_ITERATIONS = 4
 # MAX_OUTPUT_TOKENS = 8192  # Optional: override global default
 
 [dialectic.levels.max]
-# PROVIDER = "anthropic"
-# MODEL = "claude-haiku-4-5"
-PROVIDER = "google"
-MODEL = "gemini-3.1-pro-preview"
+# PROVIDER = "custom"
+# MODEL = "qwen/qwen3-235b-a22b-2507"
+PROVIDER = "custom"
+MODEL = "qwen/qwen3-235b-a22b-2507"
 THINKING_BUDGET_TOKENS = 2048
 MAX_TOOL_ITERATIONS = 10
 # MAX_OUTPUT_TOKENS = 8192  # Optional: override global default
 # Backup provider example (optional, must set both or neither):
 # BACKUP_PROVIDER = "google"
 # BACKUP_MODEL = "gemini-2.5-pro"
-BACKUP_PROVIDER = "custom"
-BACKUP_MODEL = "claude-haiku-4-5"
+BACKUP_PROVIDER = "google"
+BACKUP_MODEL = "gemini-2.5-pro"
 
 # Summary settings
 [summary]
 ENABLED = true
 MESSAGES_PER_SHORT_SUMMARY = 20
 MESSAGES_PER_LONG_SUMMARY = 60
-# PROVIDER = "google"
-# MODEL = "gemini-2.5-flash"
+# PROVIDER = "custom"
+# MODEL = "qwen/qwen3-32b"
 PROVIDER = "custom"
-MODEL = "qwen/qwen3.5-flash-02-23"
+MODEL = "qwen/qwen3-32b"
 MAX_TOKENS_SHORT = 1000
 MAX_TOKENS_LONG = 4000
 THINKING_BUDGET_TOKENS = 512
@@ -178,24 +179,24 @@ DOCUMENT_THRESHOLD = 50
 IDLE_TIMEOUT_MINUTES = 60
 MIN_HOURS_BETWEEN_DREAMS = 8
 ENABLED_TYPES = ["omni"]
-# PROVIDER = "anthropic"
-# MODEL = "claude-sonnet-4-20250514"
-PROVIDER = "google"
-MODEL = "gemini-3.1-pro-preview"
+# PROVIDER = "custom"
+# MODEL = "qwen/qwen3-235b-a22b-2507"
+PROVIDER = "custom"
+MODEL = "qwen/qwen3-235b-a22b-2507"
 MAX_OUTPUT_TOKENS = 16384
 THINKING_BUDGET_TOKENS = 8192
 MAX_TOOL_ITERATIONS = 20
 HISTORY_TOKEN_LIMIT = 16384
 # BACKUP_PROVIDER = "google"
-# BACKUP_MODEL = "gemini-2.5-flash"
-BACKUP_PROVIDER = "custom"
-BACKUP_MODEL = "anthropic/claude-sonnet-4"
+# BACKUP_MODEL = "gemini-2.5-pro"
+BACKUP_PROVIDER = "google"
+BACKUP_MODEL = "gemini-2.5-pro"
 
 # Specialist models (use same provider as main model)
-# DEDUCTION_MODEL = "claude-haiku-4-5"
-# INDUCTION_MODEL = "claude-haiku-4-5"
-DUCTION_MODEL = "gemini-3.1-pro-preview"
-INDUCTION_MODEL = "gemini-3.1-pro-preview"
+# DEDUCTION_MODEL = "qwen/qwen-2.5-72b-instruct"
+# INDUCTION_MODEL = "qwen/qwen-2.5-72b-instruct"
+DEDUCTION_MODEL = "qwen/qwen-2.5-72b-instruct"
+INDUCTION_MODEL = "qwen/qwen-2.5-72b-instruct"
 
 # Surprisal-based sampling subsystem
 [dream.surprisal]
