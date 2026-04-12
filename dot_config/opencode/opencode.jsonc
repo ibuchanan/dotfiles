@@ -74,14 +74,18 @@
   },
   "mcp": {
      "forge-knowledge": {
-       "type": "remote",
-       "url": "https://mcp.atlassian.com/v1/forge/mcp",
-       "enabled": true,
+        "type": "remote",
+        "url": "https://mcp.atlassian.com/v1/forge/mcp",
+        "enabled": true,
      },
      "context7": {
        "type": "remote",
        "url": "https://mcp.context7.com/mcp/oauth",
-       "enabled": true,
-  },
+      "enabled": true,
    },
+    },
+  "plugin": [
+    "/Users/ibuchanan/dev/git/github.com/plastic-labs/opencode-honcho/honcho-ai-opencode-honcho-0.1.0.tgz",
+    "/Users/ibuchanan/dev/git/github.com/plastic-labs/opencode-honcho"
+  ],
 }
