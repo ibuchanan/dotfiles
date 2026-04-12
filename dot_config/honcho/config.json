@@ -2,8 +2,9 @@
   "hosts": {
     "hermes": {
       "peerName": "ibuchanan",
-      "workspace": "hermes",
+      "workspace": "ibuchanan-workspace",
       "aiPeer": "hermes",
+      "linkedHosts": [ "opencode" ],
       "memoryMode": "hybrid",
       "writeFrequency": "async",
       "recallMode": "hybrid",
