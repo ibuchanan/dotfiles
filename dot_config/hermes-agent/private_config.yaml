@@ -1,5 +1,5 @@
 model:
-  default: deepseek/deepseek-chat-v3.1
+  default: qwen/qwen3.5-27b
   provider: openrouter
   base_url: https://openrouter.ai/api/v1
 providers:
@@ -103,7 +103,7 @@ smart_model_routing:
   max_simple_words: 35
   cheap_model:
     provider: openrouter
-    model: qwen/qwen3-32b
+    model: qwen/qwen3.5-9b
 auxiliary:
   vision:
     provider: auto
@@ -296,7 +296,7 @@ provider_routing:
   data_collection: deny
 fallback_model:
   provider: openrouter
-  model: anthropic/claude-sonnet-4
+  model: anthropic/claude-sonnet-4.6
 session_reset:
   mode: none
   idle_minutes: 1440
