@@ -13,6 +13,7 @@ toolsets:
 agent:
   max_turns: 90
   gateway_timeout: 1800
+  restart_drain_timeout: 60
   service_tier: ''
   tool_use_enforcement: auto
   gateway_timeout_warning: 900
@@ -165,9 +166,11 @@ display:
   inline_diffs: true
   show_cost: true
   skin: slate
+  interim_assistant_messages: true
   tool_progress_command: false
   tool_progress_overrides: {}
   tool_preview_length: 0
+  platforms: {}
   tool_progress: all
   background_process_notifications: all
 privacy:
@@ -182,6 +185,9 @@ tts:
   openai:
     model: gpt-4o-mini-tts
     voice: alloy
+  mistral:
+    model: voxtral-mini-tts-2603
+    voice_id: c69964a6-ab8b-4f8a-9465-ec0925096ec8
   neutts:
     ref_audio: ''
     ref_text: ''
@@ -207,6 +213,8 @@ human_delay:
   mode: 'off'
   min_ms: 800
   max_ms: 2500
+context:
+  engine: compressor
 memory:
   memory_enabled: true
   user_profile_enabled: true
@@ -221,6 +229,7 @@ delegation:
   base_url: ''
   api_key: ''
   max_iterations: 50
+  reasoning_effort: ''
   default_toolsets:
   - terminal
   - file
@@ -290,7 +299,7 @@ logging:
   level: INFO
   max_size_mb: 5
   backup_count: 3
-_config_version: 14
+_config_version: 16
 provider_routing:
   sort: price
   data_collection: deny
