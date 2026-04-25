@@ -18,8 +18,5 @@ if [[ -d "$BUN_INSTALL" ]]; then
     source "$BUN_INSTALL/_bun"
 fi
 
-if [[ -x "$(command -v biome)" ]]; then
-    biome --print-shell-completion zsh
-fi
 alias knip='bunx knip'
 alias sort-package-json='bunx sort-package-json'
