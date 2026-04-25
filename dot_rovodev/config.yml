@@ -9,15 +9,26 @@ agent:
   # Temperature setting for AI model responses (0.0-1.0)
   temperature: 0.3
   # Model ID to use for the agent. See /models command to list available models.
-  modelId: openai-responses-api:gpt-5.4-2026-03-05
+  modelId: auto
   # Optional model variant key selected from dynamic configuration.
-  modelVariant: high
+  modelVariant: null
   # Per-model inference parameter overrides keyed by model ID.
   inferenceConfig: null
   # Enable the deep planning tool for complex task planning
   enableDeepPlanTool: true
+  # Efficiency level controlling iteration limits. Options: low, medium
+  # (default), high, max.
+  efficiencyLevel: medium
   # Enable/disable subagents for task delegation
   enableSubagents: true
+  # Additional directories to search for skills, beyond the RovoDev-native paths
+  # (~/.rovodev/skills/, ~/.agents/skills/, project paths). The Agent Skills
+  # SKILL.md format is an open standard shared with Claude Code, OpenAI Codex
+  # CLI, and others; this lets users install a skill once and have it picked up
+  # across tools.   null  -> use defaults (~/.claude/skills, ~/.codex/skills).
+  # []    -> disable external skill discovery entirely.   list  -> replaces the
+  # defaults; supports ~ expansion.
+  externalSkillDirs: null
   # Enable/disable experimental features
   experimental:
     # Disable the built-in Atlassian MCP server so user can configure a custom
@@ -65,11 +76,9 @@ console:
   # Editing mode for the prompt session
   editingMode: VI
   # Shell command to generate a command prompt that replaces the default '> '.
-  # For example, set 'STARSHIP_SHELL=rovodev starship prompt' to use Starship.
+  # For example, set 'STARSHIP_SHELL=rovo dev starship prompt' to use Starship.
   customCommandPrompt: null
-  # Color theme for syntax highlighting. Options: 'dark' (Dracula), 'light',
-  # 'auto' (detect system theme), or any [Pygments theme
-  # name](https://pygments.org/styles/)(e.g., 'monokai', 'solarized-light')
+  # Color theme for syntax highlighting, background color, etc.
   theme: solarized-light (bg)
   # Maximum width of the console output in characters, or 'fill' to fill the
   # terminal width
@@ -79,6 +88,9 @@ console:
   # Automatically copy selected text to clipboard when text is selected in the
   # chat
   copyOnSelect: false
+  # When enabled, Enter inserts a newline and double-Enter submits the message.
+  # When disabled (default), Enter submits and Shift+Enter inserts a newline.
+  multilineInput: false
   # Compact older agent turns to reduce memory usage in long sessions. Only the
   # last 5 turns stay fully expanded.
   compactMode: true
@@ -90,7 +102,7 @@ console:
     # — workspace directory name   • {project} — full workspace path   •
     # {branch}  — current git branch   • {session} — session title   • {model}
     # — current model name
-    displayValue: '{cwd} {session}'
+    displayValue: "{cwd} {session}"
 
 # Logging and prompt collection settings
 logging:
@@ -105,22 +117,22 @@ mcp:
   mcpConfigPath: /Users/ibuchanan/.rovodev/mcp.json
   # List of allowed MCP server signatures
   allowedMcpServers:
-  - url:https://mcp.atlassian.com/v1/forge/mcp
-  - stdio:npx:-y todotxt-mcp@latest
+    - url:https://mcp.atlassian.com/v1/forge/mcp
+    - stdio:npx:-y todotxt-mcp@latest
   # List of globally disabled MCP server signatures
   disabledMcpServers:
-  - url:https://api.atlassian.com/rovodev/v3/mcp/integrations#atlassian-project/atlassian-project
-  - url:https://api.atlassian.com/rovodev/v3/mcp/integrations#atlassian-goal/atlassian-goal
-  - url:https://api.atlassian.com/rovodev/v3/mcp/integrations#atlassian-team/atlassian-team
-  - url:https://api.atlassian.com/rovodev/v3/mcp/integrations#compass/compass
-  - url:https://api.atlassian.com/rovodev/v3/mcp/integrations#google/google-calendar
-  - url:https://api.atlassian.com/rovodev/v3/mcp/integrations#google/google-drive
-  - url:https://api.atlassian.com/rovodev/v3/mcp/integrations#google/gcp
-  - url:https://api.atlassian.com/rovodev/v3/mcp/integrations#google/gmail
-  - url:https://api.atlassian.com/rovodev/v3/mcp/integrations#s360/s360
-  - url:https://api.atlassian.com/rovodev/v3/mcp/integrations#slack/slack
-  - url:https://api.atlassian.com/rovodev/v3/mcp/integrations#talent/radarx-ui
-  - url:https://api.atlassian.com/rovodev/v3/mcp/integrations#devai/devai
+    - url:https://api.atlassian.com/rovodev/v3/mcp/integrations#atlassian-project/atlassian-project
+    - url:https://api.atlassian.com/rovodev/v3/mcp/integrations#atlassian-goal/atlassian-goal
+    - url:https://api.atlassian.com/rovodev/v3/mcp/integrations#atlassian-team/atlassian-team
+    - url:https://api.atlassian.com/rovodev/v3/mcp/integrations#compass/compass
+    - url:https://api.atlassian.com/rovodev/v3/mcp/integrations#google/google-calendar
+    - url:https://api.atlassian.com/rovodev/v3/mcp/integrations#google/google-drive
+    - url:https://api.atlassian.com/rovodev/v3/mcp/integrations#google/gcp
+    - url:https://api.atlassian.com/rovodev/v3/mcp/integrations#google/gmail
+    - url:https://api.atlassian.com/rovodev/v3/mcp/integrations#s360/s360
+    - url:https://api.atlassian.com/rovodev/v3/mcp/integrations#slack/slack
+    - url:https://api.atlassian.com/rovodev/v3/mcp/integrations#talent/radarx-ui
+    - url:https://api.atlassian.com/rovodev/v3/mcp/integrations#devai/devai
 
 # Tool and command permission settings
 toolPermissions:
@@ -136,6 +148,7 @@ toolPermissions:
     expand_code_chunks: allow
     expand_folder: allow
     grep: allow
+    create_confluence_page: allow
     search-forge-docs: allow
     forge-development-guide: allow
     forge-ui-kit-developer-guide: allow
@@ -143,129 +156,131 @@ toolPermissions:
     add-tasks: allow
     complete-tasks: allow
     list-forge-modules: allow
+    atlassian_docs_search: allow
+    forge-app-manifest-guide: allow
   bash:
     # Default permission for bash commands not explicitly listed
     default: ask
     # List of specific bash commands with their permission settings
     commands:
-    - command: cat(\s.*)?
-      permission: allow
-    - command: cp(\s.*)?
-      permission: allow
-    - command: diff(\s.*)?
-      permission: allow
-    - command: find(\s.*)?
-      permission: allow
-    - command: ln(\s.*)?
-      permission: allow
-    - command: ls(\s.*)?
-      permission: allow
-    - command: mkdir(\s.*)?
-      permission: allow
-    - command: mv(\s.*)?
-      permission: allow
-    - command: pwd(\s.*)?
-      permission: allow
-    - command: touch(\s.*)?
-      permission: allow
-    - command: awk(\s.*)?
-      permission: allow
-    - command: cut(\s.*)?
-      permission: allow
-    - command: echo(\s.*)?
-      permission: allow
-    - command: grep(\s.*)?
-      permission: allow
-    - command: head(\s.*)?
-      permission: allow
-    - command: sed(\s.*)?
-      permission: allow
-    - command: sort(\s.*)?
-      permission: allow
-    - command: tail(\s.*)?
-      permission: allow
-    - command: uniq(\s.*)?
-      permission: allow
-    - command: wc(\s.*)?
-      permission: allow
-    - command: basename(\s.*)?
-      permission: allow
-    - command: dirname(\s.*)?
-      permission: allow
-    - command: test(\s.*)?
-      permission: allow
-    - command: xargs(\s.*)?
-      permission: allow
-    - command: fd(\s.*)?
-      permission: allow
-    - command: jq(\s.*)?
-      permission: allow
-    - command: rg(\s.*)?
-      permission: allow
-    - command: sd(\s.*)?
-      permission: allow
-    - command: tree(\s.*)?
-      permission: allow
-    - command: yq(\s.*)?
-      permission: allow
-    - command: shellcheck(\s.*)?
-      permission: allow
-    - command: shfmt(\s.*)?
-      permission: allow
-    - command: bru(\s.*)?
-      permission: allow
-    - command: restish(\s.*)?
-      permission: allow
-    - command: xh(\s.*)?
-      permission: allow
-    - command: docling(\s.*)?
-      permission: allow
-    - command: npx skills find(\s.*)?
-      permission: allow
-    - command: git bisect(\s.*)?
-      permission: allow
-    - command: git blame(\s.*)?
-      permission: allow
-    - command: git clone(\s.*)?
-      permission: allow
-    - command: git diff(\s.*)?
-      permission: allow
-    - command: git grep(\s.*)?
-      permission: allow
-    - command: git init(\s.*)?
-      permission: allow
-    - command: git log(\s.*)?
-      permission: allow
-    - command: git push(\s.*)?
-      permission: deny
-    - command: git show(\s.*)?
-      permission: allow
-    - command: git status(\s.*)?
-      permission: allow
-    - command: uv(\s.*)?
-      permission: allow
-    - command: npm run(\s.*)?
-      permission: allow
-    - command: npm test(\s.*)?
-      permission: allow
-    - command: knip(\s.*)?
-      permission: allow
-    - command: sort-package-json(\s.*)?
-      permission: allow
-    - command: tsx(\s.*)?
-      permission: allow
-    - command: forge --help
-      permission: allow
-    - command: forge environments(\s.*)?
-      permission: allow
-    - command: forge lint(\s.*)?
-      permission: allow
-    - command: forge logs(\s.*)?
-      permission: allow
-    - command: forge version(\s.*)?
-      permission: allow
-    - command: forge whoami(\s.*)?
-      permission: allow
+      - command: cat(\s.*)?
+        permission: allow
+      - command: cp(\s.*)?
+        permission: allow
+      - command: diff(\s.*)?
+        permission: allow
+      - command: find(\s.*)?
+        permission: allow
+      - command: ln(\s.*)?
+        permission: allow
+      - command: ls(\s.*)?
+        permission: allow
+      - command: mkdir(\s.*)?
+        permission: allow
+      - command: mv(\s.*)?
+        permission: allow
+      - command: pwd(\s.*)?
+        permission: allow
+      - command: touch(\s.*)?
+        permission: allow
+      - command: awk(\s.*)?
+        permission: allow
+      - command: cut(\s.*)?
+        permission: allow
+      - command: echo(\s.*)?
+        permission: allow
+      - command: grep(\s.*)?
+        permission: allow
+      - command: head(\s.*)?
+        permission: allow
+      - command: sed(\s.*)?
+        permission: allow
+      - command: sort(\s.*)?
+        permission: allow
+      - command: tail(\s.*)?
+        permission: allow
+      - command: uniq(\s.*)?
+        permission: allow
+      - command: wc(\s.*)?
+        permission: allow
+      - command: basename(\s.*)?
+        permission: allow
+      - command: dirname(\s.*)?
+        permission: allow
+      - command: test(\s.*)?
+        permission: allow
+      - command: xargs(\s.*)?
+        permission: allow
+      - command: fd(\s.*)?
+        permission: allow
+      - command: jq(\s.*)?
+        permission: allow
+      - command: rg(\s.*)?
+        permission: allow
+      - command: sd(\s.*)?
+        permission: allow
+      - command: tree(\s.*)?
+        permission: allow
+      - command: yq(\s.*)?
+        permission: allow
+      - command: shellcheck(\s.*)?
+        permission: allow
+      - command: shfmt(\s.*)?
+        permission: allow
+      - command: bru(\s.*)?
+        permission: allow
+      - command: restish(\s.*)?
+        permission: allow
+      - command: xh(\s.*)?
+        permission: allow
+      - command: docling(\s.*)?
+        permission: allow
+      - command: npx skills find(\s.*)?
+        permission: allow
+      - command: git bisect(\s.*)?
+        permission: allow
+      - command: git blame(\s.*)?
+        permission: allow
+      - command: git clone(\s.*)?
+        permission: allow
+      - command: git diff(\s.*)?
+        permission: allow
+      - command: git grep(\s.*)?
+        permission: allow
+      - command: git init(\s.*)?
+        permission: allow
+      - command: git log(\s.*)?
+        permission: allow
+      - command: git push(\s.*)?
+        permission: deny
+      - command: git show(\s.*)?
+        permission: allow
+      - command: git status(\s.*)?
+        permission: allow
+      - command: uv(\s.*)?
+        permission: allow
+      - command: npm run(\s.*)?
+        permission: allow
+      - command: npm test(\s.*)?
+        permission: allow
+      - command: knip(\s.*)?
+        permission: allow
+      - command: sort-package-json(\s.*)?
+        permission: allow
+      - command: tsx(\s.*)?
+        permission: allow
+      - command: forge --help
+        permission: allow
+      - command: forge environments(\s.*)?
+        permission: allow
+      - command: forge lint(\s.*)?
+        permission: allow
+      - command: forge logs(\s.*)?
+        permission: allow
+      - command: forge version(\s.*)?
+        permission: allow
+      - command: forge whoami(\s.*)?
+        permission: allow
     # Run bash commands in a sandboxed environment - currently available for
     # MacOS and Linux only. Enabling this option for Windows will prevent the
     # agent from running powershell commands.
@@ -281,7 +296,9 @@ toolPermissions:
   allowedExternalPaths: []
 
 announcementTracking:
-  announcementViewCounts: {}
+  announcementViewCounts:
+    0e2cf7dba34aada97088b0baf9fcb909: 5
+    f9c51c5292a69730a4ab2f63a4789ecc: 5
 
 sessionFeedback:
   permanentlyDisabled: true
@@ -296,7 +313,7 @@ smartTasks:
   enabled: true
   # List of task discovery sources
   sources:
-  - filesystem
+    - filesystem
 
 # Event Hooks configuration. See /hooks command to list available events.
 eventHooks:
