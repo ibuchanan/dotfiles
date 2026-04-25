@@ -10,10 +10,16 @@ if [[ -d "$FNM_DIR" ]] && [[ -x "$(command -v fnm)" ]]; then
     eval "$(fnm env --use-on-cd)"
 fi
 
-# [Node Version Manager](https://github.com/nvm-sh/nvm)
-# brew install nvm
-# Works but complains
-export NVM_DIR="$HOME/.nvm"
-if [[ -d "$NVM_DIR" ]] && [[ -x "$(command -v nvm)" ]]; then
-    source "$(brew --prefix nvm)/nvm.sh"
+# [bun](https://bun.com/)
+# curl -fsSL https://bun.sh/install | bash
+export BUN_INSTALL="$HOME/.bun"
+if [[ -d "$BUN_INSTALL" ]]; then
+    export PATH="$BUN_INSTALL/bin:$PATH"
+    source "$BUN_INSTALL/_bun"
 fi
+
+if [[ -x "$(command -v biome)" ]]; then
+    biome --print-shell-completion zsh
+fi
+alias knip='bunx knip'
+alias sort-package-json='bunx sort-package-json'

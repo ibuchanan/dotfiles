@@ -4,7 +4,6 @@
 # brew install zinit
 if [[ -f "$(brew --prefix)/opt/zinit/zinit.zsh" ]]; then
     source "$(brew --prefix)/opt/zinit/zinit.zsh"
-    autoload -Uz compinit && compinit
     autoload -Uz _zinit
     (( ${+_comps} )) && _comps[zinit]=_zinit
 
@@ -24,6 +23,30 @@ if [[ -f "$(brew --prefix)/opt/zinit/zinit.zsh" ]]; then
     zinit light zsh-users/zsh-autosuggestions
     zinit light trystan2k/zsh-tab-title
     zinit snippet OMZ::plugins/command-not-found
+
+    # CLI completions generated on install / regenerated on `zinit update`
+    zinit ice as"completion" id-as"turbo-completion" has"turbo" \
+        atclone"turbo completion zsh > _turbo; zinit creinstall -q turbo-completion" \
+        atpull"%atclone" run-atpull
+    zinit light zdharma-continuum/null
+
+    zinit ice as"completion" id-as"opencode-completion" has"opencode" \
+        atclone"opencode completion zsh > _opencode; zinit creinstall -q opencode-completion" \
+        atpull"%atclone" run-atpull
+    zinit light zdharma-continuum/null
+
+    zinit ice as"completion" id-as"forge-completion" has"forge" \
+        atclone'{ print "#compdef forge"; forge --completion; } > _forge; zinit creinstall -q forge-completion' \
+        atpull"%atclone" run-atpull
+    zinit light zdharma-continuum/null
+
+    zinit ice as"completion" id-as"zrok-completion" has"zrok" \
+        atclone"zrok completion zsh > _zrok; zinit creinstall -q zrok-completion" \
+        atpull"%atclone" run-atpull
+    zinit light zdharma-continuum/null
+
+    # Initialize the completion system after all completions are in place
+    zicompinit
 elif [[ -d $HOME/.oh-my-zsh ]]; then
     # Autosuggestions
     source $HOME/.oh-my-zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
