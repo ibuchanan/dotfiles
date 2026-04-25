@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@augmentcode/auggie": "^0.24.0",
+    "@biomejs/biome": "^2.4.13",
+    "@forge/cli": "^12.18.0",
+    "opencode-ai": "^1.14.25",
+    "promptfoo": "^0.121.8",
+    "turbo": "^2.9.6"
+  }
+}
