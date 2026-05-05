@@ -1,14 +1,16 @@
 {
   "dependencies": {
-    "@augmentcode/auggie": "^0.24.0",
+    "@augmentcode/auggie": "^0.25.2",
     "@biomejs/biome": "^2.4.14",
     "@forge/cli": "^12.20.0",
     "cspell": "^10.0.0",
     "ctx7": "^0.4.1",
+    "fallow": "^2.64.0",
     "knip": "^6.11.0",
     "license-checker-evergreen": "^6.2.1",
     "markdownlint-cli2": "^0.22.1",
-    "opencode-ai": "^1.14.39",
+    "npm-package-json-lint": "^10.4.0",
+    "opencode-ai": "1.14.39",
     "promptfoo": "^0.121.9",
     "sort-package-json": "^3.6.1",
     "turbo": "^2.9.9",

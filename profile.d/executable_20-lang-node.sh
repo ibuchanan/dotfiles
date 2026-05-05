@@ -18,5 +18,4 @@ if [[ -d "$BUN_INSTALL" ]]; then
     source "$BUN_INSTALL/_bun"
 fi
 
-alias knip='bunx knip'
-alias sort-package-json='bunx sort-package-json'
+alias promptfoo='fnm exec --using=22 -- promptfoo'
