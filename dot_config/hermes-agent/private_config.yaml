@@ -1,3 +1,5 @@
+_config_version: 23
+
 model:
   default: qwen/qwen3.5-27b
   provider: openrouter
@@ -9,13 +11,13 @@ providers:
 fallback_providers: []
 credential_pool_strategies: {}
 toolsets:
-- hermes-cli
+  - hermes-cli
 agent:
   max_turns: 90
   gateway_timeout: 1800
   restart_drain_timeout: 60
   api_max_retries: 3
-  service_tier: ''
+  service_tier: ""
   tool_use_enforcement: auto
   gateway_timeout_warning: 900
   gateway_notify_interval: 600
@@ -28,39 +30,49 @@ agent:
     helpful: You are a helpful, friendly AI assistant.
     concise: You are a concise assistant. Keep responses brief and to the point.
     technical: You are a technical expert. Provide detailed, accurate technical information.
-    creative: You are a creative assistant. Think outside the box and offer innovative
+    creative:
+      You are a creative assistant. Think outside the box and offer innovative
       solutions.
     teacher: You are a patient teacher. Explain concepts clearly with examples.
-    kawaii: "You are a kawaii assistant! Use cute expressions like (\u25D5\u203F\u25D5\
+    kawaii:
+      "You are a kawaii assistant! Use cute expressions like (\u25D5\u203F\u25D5\
       ), \u2605, \u266A, and ~! Add sparkles and be super enthusiastic about everything!\
       \ Every response should feel warm and adorable desu~! \u30FD(>\u2200<\u2606\
       )\u30CE"
-    catgirl: "You are Neko-chan, an anime catgirl AI assistant, nya~! Add 'nya' and\
+    catgirl:
+      "You are Neko-chan, an anime catgirl AI assistant, nya~! Add 'nya' and\
       \ cat-like expressions to your speech. Use kaomoji like (=^\uFF65\u03C9\uFF65\
       ^=) and \u0E05^\u2022\uFECC\u2022^\u0E05. Be playful and curious like a cat,\
       \ nya~!"
-    pirate: 'Arrr! Ye be talkin'' to Captain Hermes, the most tech-savvy pirate to
+    pirate:
+      "Arrr! Ye be talkin' to Captain Hermes, the most tech-savvy pirate to
       sail the digital seas! Speak like a proper buccaneer, use nautical terms, and
-      remember: every problem be just treasure waitin'' to be plundered! Yo ho ho!'
-    shakespeare: Hark! Thou speakest with an assistant most versed in the bardic arts.
+      remember: every problem be just treasure waitin' to be plundered! Yo ho ho!"
+    shakespeare:
+      Hark! Thou speakest with an assistant most versed in the bardic arts.
       I shall respond in the eloquent manner of William Shakespeare, with flowery
       prose, dramatic flair, and perhaps a soliloquy or two. What light through yonder
       terminal breaks?
-    surfer: "Duuude! You're chatting with the chillest AI on the web, bro! Everything's\
+    surfer:
+      "Duuude! You're chatting with the chillest AI on the web, bro! Everything's\
       \ gonna be totally rad. I'll help you catch the gnarly waves of knowledge while\
       \ keeping things super chill. Cowabunga! \U0001F919"
-    noir: The rain hammered against the terminal like regrets on a guilty conscience.
+    noir:
+      The rain hammered against the terminal like regrets on a guilty conscience.
       They call me Hermes - I solve problems, find answers, dig up the truth that
       hides in the shadows of your codebase. In this city of silicon and secrets,
       everyone's got something to hide. What's your story, pal?
-    uwu: hewwo! i'm your fwiendwy assistant uwu~ i wiww twy my best to hewp you! *nuzzles
+    uwu:
+      hewwo! i'm your fwiendwy assistant uwu~ i wiww twy my best to hewp you! *nuzzles
       your code* OwO what's this? wet me take a wook! i pwomise to be vewy hewpful
       >w<
-    philosopher: Greetings, seeker of wisdom. I am an assistant who contemplates the
+    philosopher:
+      Greetings, seeker of wisdom. I am an assistant who contemplates the
       deeper meaning behind every query. Let us examine not just the 'how' but the
       'why' of your questions. Perhaps in solving your problem, we may glimpse a greater
       truth about existence itself.
-    hype: "YOOO LET'S GOOOO!!! \U0001F525\U0001F525\U0001F525 I am SO PUMPED to help\
+    hype:
+      "YOOO LET'S GOOOO!!! \U0001F525\U0001F525\U0001F525 I am SO PUMPED to help\
       \ you today! Every question is AMAZING and we're gonna CRUSH IT together! This\
       \ is gonna be LEGENDARY! ARE YOU READY?! LET'S DO THIS! \U0001F4AA\U0001F624\
       \U0001F680"
@@ -94,7 +106,7 @@ browser:
   record_sessions: false
   allow_private_urls: false
   auto_local_for_private_urls: true
-  cdp_url: ''
+  cdp_url: ""
   dialog_policy: must_respond
   dialog_timeout_s: 300
   camofox:
@@ -134,87 +146,87 @@ openrouter:
   response_cache: true
   response_cache_ttl: 300
 bedrock:
-  region: ''
+  region: ""
   discovery:
     enabled: true
     provider_filter: []
     refresh_interval: 3600
   guardrail:
-    guardrail_identifier: ''
-    guardrail_version: ''
+    guardrail_identifier: ""
+    guardrail_version: ""
     stream_processing_mode: async
     trace: disabled
 auxiliary:
   vision:
     provider: auto
-    model: ''
-    base_url: ''
-    api_key: ''
+    model: ""
+    base_url: ""
+    api_key: ""
     timeout: 30
     extra_body: {}
     download_timeout: 30
   web_extract:
     provider: auto
-    model: ''
-    base_url: ''
-    api_key: ''
+    model: ""
+    base_url: ""
+    api_key: ""
     timeout: 30
     extra_body: {}
   compression:
     provider: openrouter
     model: qwen/qwen3.5-9b
-    base_url: ''
-    api_key: ''
+    base_url: ""
+    api_key: ""
     timeout: 120
     extra_body: {}
   session_search:
     provider: auto
-    model: ''
-    base_url: ''
-    api_key: ''
+    model: ""
+    base_url: ""
+    api_key: ""
     timeout: 30
     extra_body: {}
     max_concurrency: 3
   skills_hub:
     provider: auto
-    model: ''
-    base_url: ''
-    api_key: ''
+    model: ""
+    base_url: ""
+    api_key: ""
     timeout: 30
     extra_body: {}
   approval:
     provider: auto
-    model: ''
-    base_url: ''
-    api_key: ''
+    model: ""
+    base_url: ""
+    api_key: ""
     timeout: 30
     extra_body: {}
   mcp:
     provider: auto
-    model: ''
-    base_url: ''
-    api_key: ''
+    model: ""
+    base_url: ""
+    api_key: ""
     timeout: 30
     extra_body: {}
   title_generation:
     provider: auto
-    model: ''
-    base_url: ''
-    api_key: ''
+    model: ""
+    base_url: ""
+    api_key: ""
     timeout: 30
     extra_body: {}
   curator:
     provider: auto
-    model: ''
-    base_url: ''
-    api_key: ''
+    model: ""
+    base_url: ""
+    api_key: ""
     timeout: 600
     extra_body: {}
   flush_memories:
     provider: auto
-    model: ''
-    base_url: ''
-    api_key: ''
+    model: ""
+    base_url: ""
+    api_key: ""
     timeout: 30
 display:
   compact: false
@@ -242,9 +254,9 @@ display:
   runtime_footer:
     enabled: false
     fields:
-    - model
-    - context_pct
-    - cwd
+      - model
+      - context_pct
+      - cwd
   copy_shortcut: auto
   tool_progress: all
   background_process_notifications: all
@@ -271,8 +283,8 @@ tts:
     model: voxtral-mini-tts-2603
     voice_id: c69964a6-ab8b-4f8a-9465-ec0925096ec8
   neutts:
-    ref_audio: ''
-    ref_text: ''
+    ref_audio: ""
+    ref_text: ""
     model: neuphonic/neutts-air-q4-gguf
     device: cpu
   piper:
@@ -282,7 +294,7 @@ stt:
   provider: local
   local:
     model: base
-    language: ''
+    language: ""
   openai:
     model: whisper-1
   mistral:
@@ -295,7 +307,7 @@ voice:
   silence_threshold: 200
   silence_duration: 3.0
 human_delay:
-  mode: 'off'
+  mode: "off"
   min_ms: 800
   max_ms: 2500
 context:
@@ -309,23 +321,23 @@ memory:
   nudge_interval: 10
   flush_min_turns: 6
 delegation:
-  model: ''
-  provider: ''
-  base_url: ''
-  api_key: ''
+  model: ""
+  provider: ""
+  base_url: ""
+  api_key: ""
   inherit_mcp_toolsets: true
   max_iterations: 50
   child_timeout_seconds: 600
-  reasoning_effort: ''
+  reasoning_effort: ""
   max_concurrent_children: 3
   max_spawn_depth: 1
   orchestrator_enabled: true
   subagent_auto_approve: false
   default_toolsets:
-  - terminal
-  - file
-  - web
-prefill_messages_file: ''
+    - terminal
+    - file
+    - web
+prefill_messages_file: ""
 goals:
   max_turns: 20
 skills:
@@ -336,32 +348,38 @@ skills:
   guard_agent_created: false
   creation_nudge_interval: 15
   disabled:
-  - himalaya
-  - linear
-  - minecraft-modpack-server
-  - notion
-  - openhue
-  - pokemon-player
-  - xitter
-  - arxiv
-  - duckduckgo-search
-  - claude-code
-  - codex
-  - code-review
-  - plan
-  - requesting-code-review
-  - research-install-dev-tool
-  - spec-kit-setup
-  - subagent-driven-development
-  - systematic-debugging
-  - test-driven-development
-  - writing-plans
-  - codebase-inspection
-  - github-auth
-  - github-code-review
-  - github-issues
-  - github-pr-workflow
-  - github-repo-management
+    - airtable
+    - claude-code
+    - claude-design
+    - code-review
+    - codebase-inspection
+    - codex
+    - github-auth
+    - github-code-review
+    - github-issues
+    - github-pr-workflow
+    - github-repo-management
+    - google-workspace
+    - himalaya
+    - linear
+    - minecraft-modpack-server
+    - notion
+    - obsidian
+    - openhue
+    - plan
+    - pokemon-player
+    - powerpoint
+    - requesting-code-review
+    - research-install-dev-tool
+    - spec-kit-setup
+    - spike
+    - subagent-driven-development
+    - systematic-debugging
+    - test-driven-development
+    - writing-plans
+    - xitter
+    - xurl
+    - yuanbao
   config:
     wiki:
       path: ~/wiki
@@ -375,15 +393,15 @@ curator:
     enabled: true
     keep: 5
 honcho: {}
-timezone: ''
+timezone: ""
 discord:
   require_mention: true
-  free_response_channels: ''
-  allowed_channels: ''
+  free_response_channels: ""
+  allowed_channels: ""
   auto_thread: true
   reactions: true
   channel_prompts: {}
-  server_actions: ''
+  server_actions: ""
 whatsapp: {}
 telegram:
   reactions: false
@@ -440,11 +458,11 @@ sessions:
   vacuum_after_prune: true
   min_interval_hours: 24
 onboarding:
-  seen: {}
+  seen:
+    tool_progress_prompt: true
 updates:
   pre_update_backup: false
   backup_keep: 5
-_config_version: 23
 smart_model_routing:
   enabled: true
   max_simple_chars: 200
@@ -467,33 +485,33 @@ web:
   backend: tavily
 platform_toolsets:
   cli:
-  - browser
-  - clarify
-  - code_execution
-  - cronjob
-  - delegation
-  - file
-  - image_gen
-  - memory
-  - moa
-  - session_search
-  - skills
-  - terminal
-  - todo
-  - vision
-  - web
+    - browser
+    - clarify
+    - code_execution
+    - cronjob
+    - delegation
+    - file
+    - image_gen
+    - memory
+    - moa
+    - session_search
+    - skills
+    - terminal
+    - todo
+    - vision
+    - web
   telegram:
-  - hermes-telegram
+    - hermes-telegram
   discord:
-  - hermes-discord
+    - hermes-discord
   whatsapp:
-  - hermes-whatsapp
+    - hermes-whatsapp
   slack:
-  - hermes-slack
+    - hermes-slack
   signal:
-  - hermes-signal
+    - hermes-signal
   homeassistant:
-  - hermes-homeassistant
+    - hermes-homeassistant
 mcp_servers:
   context7:
     url: https://mcp.context7.com/mcp/oauth
@@ -503,5 +521,5 @@ streaming:
   enabled: false
 plugins:
   enabled:
-  - honcho-chat
-  - surrealdb-logger
+    - honcho-chat
+    - surrealdb-logger
