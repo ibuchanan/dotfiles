@@ -1,14 +1,44 @@
 _config_version: 23
 
-model:
-  default: qwen/qwen3.5-27b
-  provider: openrouter
-  base_url: https://openrouter.ai/api/v1
 providers:
   ml-studio:
     api: http://localhost:1234/v1
     name: ml-studio
 fallback_providers: []
+provider_routing:
+  sort: price
+  data_collection: deny
+openrouter:
+  response_cache: true
+  response_cache_ttl: 300
+bedrock:
+  region: ""
+  discovery:
+    enabled: true
+    provider_filter: []
+    refresh_interval: 3600
+  guardrail:
+    guardrail_identifier: ""
+    guardrail_version: ""
+    stream_processing_mode: async
+    trace: disabled
+
+model:
+  default: deepseek/deepseek-v4-flash
+  provider: openrouter
+  base_url: https://openrouter.ai/api/v1
+fallback_model:
+  provider: openrouter
+  model: qwen/qwen3.6-plus
+  base_url: https://openrouter.ai/api/v1
+smart_model_routing:
+  enabled: true
+  max_simple_chars: 200
+  max_simple_words: 35
+  cheap_model:
+    provider: openrouter
+    model: qwen/qwen3.5-9b
+
 credential_pool_strategies: {}
 toolsets:
   - hermes-cli
@@ -111,6 +141,11 @@ browser:
   dialog_timeout_s: 300
   camofox:
     managed_persistence: false
+api_server:
+  enabled: true
+  host: 127.0.0.1
+  port: 8642
+  model_name: "Hermes Agent"
 checkpoints:
   enabled: true
   max_snapshots: 50
@@ -142,20 +177,6 @@ compression:
   hygiene_hard_message_limit: 400
 prompt_caching:
   cache_ttl: 5m
-openrouter:
-  response_cache: true
-  response_cache_ttl: 300
-bedrock:
-  region: ""
-  discovery:
-    enabled: true
-    provider_filter: []
-    refresh_interval: 3600
-  guardrail:
-    guardrail_identifier: ""
-    guardrail_version: ""
-    stream_processing_mode: async
-    trace: disabled
 auxiliary:
   vision:
     provider: auto
@@ -463,19 +484,6 @@ onboarding:
 updates:
   pre_update_backup: false
   backup_keep: 5
-smart_model_routing:
-  enabled: true
-  max_simple_chars: 200
-  max_simple_words: 35
-  cheap_model:
-    provider: openrouter
-    model: qwen/qwen3.5-9b
-provider_routing:
-  sort: price
-  data_collection: deny
-fallback_model:
-  provider: openrouter
-  model: anthropic/claude-sonnet-4.6
 session_reset:
   mode: none
   idle_minutes: 1440

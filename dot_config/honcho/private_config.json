@@ -4,7 +4,9 @@
       "peerName": "ibuchanan",
       "workspace": "ibuchanan-workspace",
       "aiPeer": "hermes",
-      "linkedHosts": [ "opencode" ],
+      "linkedHosts": [
+        "opencode"
+      ],
       "memoryMode": "hybrid",
       "writeFrequency": "async",
       "recallMode": "hybrid",
@@ -14,5 +16,6 @@
     }
   },
   "baseUrl": "http://127.0.0.1:8000",
-  "apiKey": "no-api-key-needed"
+  "apiKey": "no-api-key-needed",
+  "environmentUrl": "http://localhost:8000"
 }

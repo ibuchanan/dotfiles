@@ -4,9 +4,10 @@
   "hosts": {
     "opencode": {
       "workspace": "ibuchanan-workspace",
-      "peerName": "ibuchanan",
       "aiPeer": "opencode",
-      "linkedHosts": [ "hermes" ]
+      "linkedHosts": [
+        "hermes"
+      ]
     }
   }
 }
