@@ -195,7 +195,7 @@ auxiliary:
     extra_body: {}
   compression:
     provider: openrouter
-    model: qwen/qwen3.5-9b
+    model: deepseek/deepseek-v4-flash
     base_url: ""
     api_key: ""
     timeout: 120
