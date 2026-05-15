@@ -39,6 +39,11 @@ agent:
 sessions:
   # Directory where session data is stored
   persistenceDir: /Users/ibuchanan/.rovodev/sessions
+  # Enable session memory over prior sessions when enabled by dynamic
+  # configuration
+  enableSessionMemory: true
+  # Allow session memory to reference sessions from other workspace locations
+  enableCrossWorkspaceSessionMemory: false
   # (Experimental) When enabled, Rovo Dev may warn and offer to switch your
   # workspace git state (branch/commit) to match the session checkpoint when
   # restoring or switching sessions.
@@ -169,6 +174,7 @@ toolPermissions:
     ads_search_components: allow
     ads_search_icons: allow
     ads_get_guidelines: allow
+    bitbucketWorkspace: allow
   bash:
     # Default permission for bash commands not explicitly listed
     default: ask
@@ -301,6 +307,14 @@ toolPermissions:
     - command: ctx7(\s.*)?
       permission: allow
     - command: biome(\s.*)?
+      permission: allow
+    - command: firecrawl(\s.*)?
+      permission: allow
+    - command: markdownlint-cli2(\s.*)?
+      permission: allow
+    - command: fallow(\s.*)?
+      permission: allow
+    - command: acli(\s.*)?
       permission: allow
     # Run bash commands in a sandboxed environment - currently available for
     # MacOS and Linux only. Enabling this option for Windows will prevent the
