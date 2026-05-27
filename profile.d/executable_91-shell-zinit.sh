@@ -45,6 +45,9 @@ if [[ -f "$(brew --prefix)/opt/zinit/zinit.zsh" ]]; then
         atpull"%atclone" run-atpull
     zinit light zdharma-continuum/null
 
+    zinit ice as"completion" id-as"bun-completion"
+    zinit snippet "$HOME/.bun/_bun"
+
     # Initialize the completion system after all completions are in place
     zicompinit
 elif [[ -d $HOME/.oh-my-zsh ]]; then

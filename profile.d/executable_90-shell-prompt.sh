@@ -34,3 +34,7 @@ fi
 if [[ -x "$(command -v macchina)" ]]; then
     macchina
 fi
+
+if [[ -n "$GHOSTTY_RESOURCES_DIR" ]]; then
+    source "$GHOSTTY_RESOURCES_DIR/shell-integration/zsh/ghostty.zsh"
+fi

@@ -22,3 +22,5 @@ alias fbs="mask --maskfile $FORGE_BOOTSTRAP_HOME/maskfile.md"
 if [[ -d "$HOME/.orbit/bin" ]]; then
     export PATH="$HOME/.orbit/bin:$PATH"
 fi
+
+alias rovodev='acli rovodev'
