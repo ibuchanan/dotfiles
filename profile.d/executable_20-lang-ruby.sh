@@ -3,6 +3,8 @@
 
 export RBENV_HOME="$HOME/.rbenv"
 if [[ -d "$RBENV_HOME" ]]; then
-	export PATH="$RBENV_HOME/bin:$PATH"
+	if [[ ":$PATH:" != *":$RBENV_HOME/bin:"* ]]; then
+		export PATH="$RBENV_HOME/bin:$PATH"
+	fi
 	eval "$(rbenv init -)"
 fi

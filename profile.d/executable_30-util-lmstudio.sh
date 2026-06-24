@@ -5,6 +5,7 @@
 
 LMSHOME="$HOME/.lmstudio/"
 if [[ -x "$(command -v "$LMSHOME/bin/lms")" ]]; then
-    PATH="$PATH:$LMSHOME/bin"
-    export PATH
+	if [[ ":$PATH:" != *":$LMSHOME/bin:"* ]]; then
+		export PATH="$PATH:$LMSHOME/bin"
+	fi
 fi

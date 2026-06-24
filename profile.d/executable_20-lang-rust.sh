@@ -3,5 +3,7 @@
 # Install
 # curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 if [[ -d $HOME/.cargo/bin ]]; then
-    export PATH="$PATH:$HOME/.cargo/bin"
+	if [[ ":$PATH:" != *":$HOME/.cargo/bin:"* ]]; then
+		export PATH="$PATH:$HOME/.cargo/bin"
+	fi
 fi
