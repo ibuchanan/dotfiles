@@ -1,13 +1,11 @@
 {
   "dependencies": {
-    "@augmentcode/auggie": "*",
     "@biomejs/biome": "*",
     "@forge/cli": "*",
     "cspell": "*",
     "ctx7": "*",
     "fallow": "*",
     "firecrawl-cli": "*",
-    "knip": "*",
     "license-checker-evergreen": "*",
     "markdownlint-cli2": "*",
     "npm-package-json-lint": "*",

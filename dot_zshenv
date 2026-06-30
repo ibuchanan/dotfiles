@@ -1,4 +1,15 @@
 #! /usr/bin/env bash
+# Point Node.js to a safe OpenSSL config to bypass macOS sandbox blocking
+if [ -f "/opt/homebrew/etc/openssl@3/openssl.cnf" ]; then
+    export OPENSSL_CONF="/opt/homebrew/etc/openssl@3/openssl.cnf"
+elif [ -f "/usr/local/etc/openssl@3/openssl.cnf" ]; then
+    export OPENSSL_CONF="/usr/local/etc/openssl@3/openssl.cnf"
+else
+    # Fallback: create a blank dummy file if Homebrew's config isn't found
+    [[ ! -f "$HOME/.openssl.cnf" ]] && touch "$HOME/.openssl.cnf"
+    export OPENSSL_CONF="$HOME/.openssl.cnf"
+fi
+
 # Initialize shell from files in ~/profile.d
 # Order matters
 # Change file extension from .sh to skip on startup

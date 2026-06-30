@@ -16,6 +16,7 @@ if [[ ! -x "$BREWCMD" ]]; then
 fi
 if [[ -x "$(command -v "$BREWCMD")" ]]; then
 	eval "$("$BREWCMD" shellenv)"
+	export HOMEBREW_NO_ANALYTICS=1
 	export HOMEBREW_NO_ENV_HINTS=1
 	export HOMEBREW_NO_INSECURE_REDIRECT=1
 	# shellcheck disable=SC2206

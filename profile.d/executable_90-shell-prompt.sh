@@ -24,15 +24,17 @@ if [[ $- == *i* ]]; then
 		eval "$(starship init zsh)"
 	fi
 
-	# [Fastfetch](https://github.com/fastfetch-cli/fastfetch)
-	# display fastfetch on terminal start for context
-	if [[ -x "$(command -v fastfetch)" ]]; then
-		fastfetch
-	fi
+	if [ -t 1 ]; then
+		# [Fastfetch](https://github.com/fastfetch-cli/fastfetch)
+		# display fastfetch on terminal start for context
+		if [[ -x "$(command -v fastfetch)" ]]; then
+			fastfetch
+		fi
 
-	# [macchina](https://github.com/Macchina-CLI/macchina)
-	# display machine information on terminal start for context
-	if [[ -x "$(command -v macchina)" ]]; then
-		macchina
+		# [macchina](https://github.com/Macchina-CLI/macchina)
+		# display machine information on terminal start for context
+		if [[ -x "$(command -v macchina)" ]]; then
+			macchina
+		fi
 	fi
 fi
