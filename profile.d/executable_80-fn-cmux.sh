@@ -6,7 +6,7 @@ if [[ $- == *i* ]]; then
 		cmux-here() {
 			local dir="${1:-.}"
 			dir="$(cd "$dir" && pwd)"
-			cmux new-workspace \
+			cmux workspace create \
 				--name "$(basename "$dir")" \
 				--cwd "$dir" \
 				--layout '{"direction":"horizontal","split":0.5,"children":[{"pane":{"surfaces"
