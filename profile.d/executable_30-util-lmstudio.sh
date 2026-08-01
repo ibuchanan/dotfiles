@@ -3,9 +3,7 @@
 # Install
 # brew install lm-studio
 
-LMSHOME="$HOME/.lmstudio/"
-if [[ -x "$(command -v "$LMSHOME/bin/lms")" ]]; then
-	if [[ ":$PATH:" != *":$LMSHOME/bin:"* ]]; then
-		export PATH="$PATH:$LMSHOME/bin"
-	fi
+LM_STUDIO_HOME="$HOME/.lmstudio/"
+if [[ -x "$(command -v "$LM_STUDIO_HOME/bin/lms")" ]] && [[ ":$PATH:" != *":$LM_STUDIO_HOME/bin:"* ]]; then
+	export PATH="$PATH:$LM_STUDIO_HOME/bin"
 fi

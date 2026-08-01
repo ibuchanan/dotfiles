@@ -2,6 +2,7 @@
   "dependencies": {
     "@biomejs/biome": "*",
     "@forge/cli": "*",
+    "@usebruno/cli": "*",
     "cspell": "*",
     "ctx7": "*",
     "fallow": "*",

@@ -21,11 +21,18 @@ if [[ $- == *i* ]]; then
 
 	# Atlassian Orbit
 	# https://hello.atlassian.net/wiki/spaces/Orbit/overview
-	if [[ -d "$HOME/.orbit/bin" ]]; then
-		if [[ ":$PATH:" != *":$HOME/.orbit/bin:"* ]]; then
-			export PATH="$HOME/.orbit/bin:$PATH"
-		fi
+	if [[ -d "$HOME/.orbit/bin" ]] && [[ ":$PATH:" != *":$HOME/.orbit/bin:"* ]]; then
+		export PATH="$HOME/.orbit/bin:$PATH"
 	fi
 
-	alias rovodev='acli rovodev'
+    # Atlassian SSH agent for YubiKey notifications
+    # https://hello.atlassian.net/wiki/spaces/cskb/pages/5250745730/Installing+the+Atlassian+SSH+agent
+    # https://bitbucket.org/asecurityteam/atlkey/src/main/
+    ATLKEYCMD="$HOME/bin/atlkey"
+    if [[ -x "$ATLKEYCMD" ]] && [[ "$OSTYPE" == "darwin"* ]] && [ ! -S /tmp/atlkey.sock ]; then
+        (
+            ~/bin/atlkey &>/dev/null &
+            disown
+        )
+    fi
 fi
