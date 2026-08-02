@@ -1,0 +1,84 @@
+{
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/agent-permissions.json",
+  "version": "1",
+  "defaultMode": "allow",
+
+  "deny": [
+    "Read(**/.env*)",
+    "Read(**/*.pem)",
+    "Read(**/*.key)",
+    "Read(**/.ssh/**)",
+    "Read(**/secrets/**)",
+    "Write(**/.env*)",
+    "Write(**/*.pem)",
+    "Write(**/*.key)",
+    "Write(**/.ssh/**)",
+    "Edit(**/.env*)",
+    "Edit(**/*.pem)",
+    "Edit(**/*.key)",
+    "Edit(**/.ssh/**)",
+
+    "WebFetch(domain:raw.githubusercontent.com*)",
+    "WebFetch(domain:pastebin.*)",
+
+    "Bash(rm -rf / *)",
+    "Bash(rm -rf /*)",
+    "Bash(rm -rf ~ *)",
+    "Bash(rm -rf $HOME *)",
+    "Bash(sudo *)",
+    "Bash(chmod 777 *)",
+    "Bash(chmod 000 *)",
+    "Bash(chmod -R *)",
+    "Bash(chown *)",
+    "Bash(dd if=*)",
+    "Bash(kill -9 *)",
+    "Bash(shutdown *)",
+    "Bash(reboot *)",
+    "Bash(halt *)",
+    "Bash(poweroff *)",
+
+    "Bash(curl *)",
+    "Bash(wget *)",
+    "Bash(nc *)",
+    "Bash(ssh *)",
+    "Bash(scp *)",
+    "Bash(rsync *)",
+
+    "Bash(git push *)",
+    "Bash(git lfs push *)",
+    "Bash(docker push *)",
+    "Bash(podman push *)",
+
+    "Bash(npm publish *)",
+    "Bash(uv publish *)",
+    "Bash(pnpm publish *)",
+    "Bash(yarn publish *)",
+    "Bash(yarn npm publish *)",
+    "Bash(cargo publish *)",
+    "Bash(dotnet nuget push *)",
+
+    "Bash(gh release *)",
+    "Bash(cargo release *)",
+
+    "Bash(psql *)",
+    "Bash(mysql *)"
+  ],
+
+  "allow": [
+    "Read()",
+
+    "WebFetch(domain:docs.*)",
+    "WebFetch(domain:developer.*)",
+    "WebFetch(domain:github.com)",
+    "WebFetch(domain:npmjs.com)",
+    "WebFetch(domain:registry.npmjs.org)",
+    "WebFetch(domain:pypi.org)",
+    "WebFetch(domain:crates.io)",
+    "WebFetch(domain:nodejs.org)",
+    "WebFetch(domain:python.org)",
+    "WebFetch(domain:rust-lang.org)",
+    "WebFetch(domain:docker.com)",
+    "WebFetch(domain:stackoverflow.com)",
+    "WebFetch(domain:*.md)"
+  ]
+}

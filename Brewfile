@@ -1,4 +1,3 @@
-tap "atlassian/acli", trusted: true
 tap "dagger/tap"
 tap "daveshanley/vacuum", trusted: true
 tap "infisical/get-cli"
@@ -6,6 +5,8 @@ tap "infisical/get-cli"
 brew "ast-grep"
 # Improved shell history for zsh, bash, fish and nushell
 brew "atuin"
+# Bash Automated Testing System
+brew "bats-core"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
 # Create and run Linux containers using lightweight virtual machines
@@ -26,6 +27,8 @@ brew "git"
 brew "git-cliff"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Manually rewrite git history
+brew "git-filter-repo"
 # Git extension for versioning large files
 brew "git-lfs"
 # Compute various size metrics for a Git repository
@@ -50,8 +53,6 @@ brew "macchina"
 brew "mas"
 # CLI task runner defined by a simple markdown file
 brew "mask"
-# Modern and intuitive terminal-based text editor
-brew "micro"
 # User-friendly CLI for OAuth2
 brew "oauth2c"
 # Drop-in replacement for Terraform. Infrastructure as Code Tool
@@ -60,6 +61,10 @@ brew "opentofu"
 brew "podman"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# CLI for interacting with REST-ish HTTP APIs
+brew "restish"
+# Rust toolchain installer
+brew "rustup"
 # Intuitive find & replace CLI
 brew "sd"
 # Static analysis and lint tool, for (ba)sh scripts
