@@ -1,0 +1,48 @@
+version: '3'
+
+# Run this file with [go-task](https://taskfile.dev/).
+# Tasks refresh global tooling.
+
+tasks:
+  mas:
+    desc: Update Mac App Store apps via mas
+    cmds:
+      - mas upgrade
+
+  brew:
+    desc: Update versions of brew packages with brew update
+    cmds:
+      - brew upgrade
+
+  node-lts:
+    desc: Update Node LTS versions via fnm
+    cmds:
+      - fnm install lts/jod
+      - fnm install lts/krypton
+      - fnm install lts/latest
+      - fnm default lts/krypton
+      - fnm use default
+
+  bun-global:
+    desc: Update versions of global CLIs installed via bun
+    cmds:
+      - bun install --global
+
+  uv-tool:
+    desc: Upgrade all tools installed via uv tool
+    cmds:
+      - uv tool upgrade --all
+
+  all:
+    desc: Default update sequence for Forge Rovo agents
+    cmds:
+      - echo "mas"
+      - task: mas
+      - echo "brew"
+      - task: brew
+      - echo "node-lts"
+      - task: node-lts
+      - echo "bun-global"
+      - task: bun-global
+      - echo "uv-tool"
+      - task: uv-tool

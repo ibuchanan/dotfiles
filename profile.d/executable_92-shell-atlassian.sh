@@ -12,13 +12,6 @@ if [[ $- == *i* ]]; then
 	# export FORGE_EMAIL=""
 	# export FORGE_API_TOKEN=""
 
-	# [Forge Bootstrap](https://github.com/ibuchanan/forge-bootstrap)
-	# Utilities for bootstrapping new Node and Atlassian Forge apps
-	export FORGE_BOOTSTRAP_HOME="$HOME/dev/git/github.com/ibuchanan/forge-bootstrap"
-	# alias expands on use, so single-quote for env vars
-	alias forge-bootstrap='mask --maskfile $FORGE_BOOTSTRAP_HOME/maskfile.md'
-	alias fbs='mask --maskfile $FORGE_BOOTSTRAP_HOME/maskfile.md'
-
 	# Atlassian Orbit
 	# https://hello.atlassian.net/wiki/spaces/Orbit/overview
 	if [[ -d "$HOME/.orbit/bin" ]] && [[ ":$PATH:" != *":$HOME/.orbit/bin:"* ]]; then
