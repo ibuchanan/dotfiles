@@ -25,8 +25,8 @@ tasks:
 
   bun-global:
     desc: Update versions of global CLIs installed via bun
-    cmds:
-      - bun install --global
+    dir: ~/.bun/install/global
+    cmd: bun install
 
   uv-tool:
     desc: Upgrade all tools installed via uv tool
