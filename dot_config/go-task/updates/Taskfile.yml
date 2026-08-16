@@ -4,11 +4,6 @@ version: '3'
 # Tasks refresh global tooling.
 
 tasks:
-  mas:
-    desc: Update Mac App Store apps via mas
-    cmds:
-      - mas upgrade
-
   brew:
     desc: Update versions of brew packages with brew update
     cmds:
@@ -36,8 +31,6 @@ tasks:
   all:
     desc: Default update sequence for Forge Rovo agents
     cmds:
-      - echo "mas"
-      - task: mas
       - echo "brew"
       - task: brew
       - echo "node-lts"

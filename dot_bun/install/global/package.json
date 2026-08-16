@@ -3,6 +3,7 @@
     "@biomejs/biome": "*",
     "@forge/cli": "*",
     "@usebruno/cli": "*",
+    "create-cloudflare": "*",
     "cspell": "*",
     "ctx7": "*",
     "fallow": "*",
