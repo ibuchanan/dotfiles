@@ -51,22 +51,19 @@ PROFILES_SAMPLE_RATE = 0.1
 # LLM settings
 [llm]
 DEFAULT_MAX_TOKENS = 2500
-EMBEDDING_PROVIDER = "openrouter"
 MAX_TOOL_OUTPUT_CHARS = 10000  # Max chars for tool output (~2500 tokens)
 MAX_MESSAGE_CONTENT_CHARS = 2000  # Max chars per message in tool results
 
 # API Keys for LLM providers
-# ANTHROPIC_API_KEY = "your-api-key"
-# OPENAI_API_KEY = "your-api-key"
-# OPENAI_COMPATIBLE_API_KEY = "your-api-key"
-# GEMINI_API_KEY = "your-api-key"
-# GROQ_API_KEY = "your-api-key"
-OPENAI_COMPATIBLE_BASE_URL = "https://openrouter.ai/api/v1"
-# OPENAI_COMPATIBLE_BASE_URL = "https://openrouter.ai/api/v1"
+# API keys are provided via Doppler (honcho/dev_personal project) as env vars:
+#   LLM_OPENAI_COMPATIBLE_API_KEY — your OpenRouter API key
+#   LLM_GEMINI_API_KEY — your Gemini API key (for backup providers)
+# Keys in config.toml are commented out; env vars take precedence.
 
-# Separate vLLM endpoint (for local models)
-# VLLM_API_KEY = "your-api-key"
-# VLLM_BASE_URL = "your-base-url"
+# Embedding settings
+[embedding]
+MODEL_CONFIG = { transport = "openai", model = "text-embedding-3-small", overrides = { base_url = "https://openrouter.ai/api/v1", api_key_env = "LLM_OPENAI_COMPATIBLE_API_KEY" } }
+VECTOR_DIMENSIONS = 1536
 
 # Deriver settings
 [deriver]
@@ -75,15 +72,7 @@ WORKERS = 1
 POLLING_SLEEP_INTERVAL_SECONDS = 1.0
 STALE_SESSION_TIMEOUT_MINUTES = 5
 # QUEUE_ERROR_RETENTION_SECONDS = 2592000  # 30 days
-# TEMPERATURE = 0.0
-# PROVIDER = "custom"
-# MODEL = "qwen/qwen3-32b"
-# BACKUP_PROVIDER = "google"
-# BACKUP_MODEL = "gemini-2.5-flash-lite"
-PROVIDER = "custom"
-MODEL = "qwen/qwen3-32b"
-BACKUP_PROVIDER = "google"
-BACKUP_MODEL = "gemini-2.5-flash-lite"
+MODEL_CONFIG = { transport = "openai", model = "qwen/qwen3.6-35b-a3b", thinking_budget_tokens = 1024, overrides = { base_url = "https://openrouter.ai/api/v1", api_key_env = "LLM_OPENAI_COMPATIBLE_API_KEY" }, fallback = { transport = "gemini", model = "gemini-2.5-flash-lite" } }
 
 DEDUPLICATE = true
 MAX_OUTPUT_TOKENS = 4096
@@ -91,7 +80,7 @@ THINKING_BUDGET_TOKENS = 1024
 LOG_OBSERVATIONS = false
 MAX_INPUT_TOKENS = 23000
 WORKING_REPRESENTATION_MAX_OBSERVATIONS = 100
-REPRESENTATION_BATCH_MAX_TOKENS = 1024
+REPRESENTATION_BATCH_TARGET_INPUT_TOKENS = 1024
 FLUSH_ENABLED = false  # Bypass batch token threshold, process work immediately
 
 # Peer card settings
@@ -108,69 +97,37 @@ SESSION_HISTORY_MAX_TOKENS = 4096
 # Per-level settings for reasoning levels
 # MAX_OUTPUT_TOKENS is optional per level; if not set, uses global MAX_OUTPUT_TOKENS
 [dialectic.levels.minimal]
-# PROVIDER = "custom"
-# MODEL = "qwen/qwen3-32b"
-PROVIDER = "custom"
-MODEL = "qwen/qwen3-32b"
-THINKING_BUDGET_TOKENS = 0
+MODEL_CONFIG = { transport = "openai", model = "qwen/qwen3.6-35b-a3b", thinking_budget_tokens = 0, overrides = { base_url = "https://openrouter.ai/api/v1", api_key_env = "LLM_OPENAI_COMPATIBLE_API_KEY" } }
 MAX_TOOL_ITERATIONS = 1
 MAX_OUTPUT_TOKENS = 250
 
 [dialectic.levels.low]
-# PROVIDER = "custom"
-# MODEL = "qwen/qwen3-32b"
-PROVIDER = "custom"
-MODEL = "qwen/qwen3-32b"
-THINKING_BUDGET_TOKENS = 0
+MODEL_CONFIG = { transport = "openai", model = "qwen/qwen3.6-35b-a3b", thinking_budget_tokens = 0, overrides = { base_url = "https://openrouter.ai/api/v1", api_key_env = "LLM_OPENAI_COMPATIBLE_API_KEY" } }
 MAX_TOOL_ITERATIONS = 5
 # MAX_OUTPUT_TOKENS = 8192  # Optional: override global default
 
 [dialectic.levels.medium]
-# PROVIDER = "custom"
-# MODEL = "qwen/qwen-2.5-72b-instruct"
-PROVIDER = "custom"
-MODEL = "qwen/qwen-2.5-72b-instruct"
-THINKING_BUDGET_TOKENS = 1024
+MODEL_CONFIG = { transport = "openai", model = "qwen/qwen3.6-plus", thinking_budget_tokens = 1024, overrides = { base_url = "https://openrouter.ai/api/v1", api_key_env = "LLM_OPENAI_COMPATIBLE_API_KEY" } }
 MAX_TOOL_ITERATIONS = 2
 # MAX_OUTPUT_TOKENS = 8192  # Optional: override global default
 
 [dialectic.levels.high]
-# PROVIDER = "custom"
-# MODEL = "qwen/qwen-2.5-72b-instruct"
-PROVIDER = "custom"
-MODEL = "qwen/qwen-2.5-72b-instruct"
-THINKING_BUDGET_TOKENS = 1024
+MODEL_CONFIG = { transport = "openai", model = "qwen/qwen3.6-plus", thinking_budget_tokens = 1024, overrides = { base_url = "https://openrouter.ai/api/v1", api_key_env = "LLM_OPENAI_COMPATIBLE_API_KEY" } }
 MAX_TOOL_ITERATIONS = 4
 # MAX_OUTPUT_TOKENS = 8192  # Optional: override global default
 
 [dialectic.levels.max]
-# PROVIDER = "custom"
-# MODEL = "qwen/qwen3-235b-a22b-2507"
-PROVIDER = "custom"
-MODEL = "qwen/qwen3-235b-a22b-2507"
-THINKING_BUDGET_TOKENS = 2048
+MODEL_CONFIG = { transport = "openai", model = "qwen/qwen3.7-max", thinking_budget_tokens = 2048, overrides = { base_url = "https://openrouter.ai/api/v1", api_key_env = "LLM_OPENAI_COMPATIBLE_API_KEY" }, fallback = { transport = "gemini", model = "gemini-2.5-pro" } }
 MAX_TOOL_ITERATIONS = 10
-# MAX_OUTPUT_TOKENS = 8192  # Optional: override global default
-# Backup provider example (optional, must set both or neither):
-# BACKUP_PROVIDER = "google"
-# BACKUP_MODEL = "gemini-2.5-pro"
-BACKUP_PROVIDER = "google"
-BACKUP_MODEL = "gemini-2.5-pro"
 
 # Summary settings
 [summary]
 ENABLED = true
 MESSAGES_PER_SHORT_SUMMARY = 20
 MESSAGES_PER_LONG_SUMMARY = 60
-# PROVIDER = "custom"
-# MODEL = "qwen/qwen3-32b"
-PROVIDER = "custom"
-MODEL = "qwen/qwen3-32b"
+MODEL_CONFIG = { transport = "openai", model = "qwen/qwen3.6-35b-a3b", thinking_budget_tokens = 512, overrides = { base_url = "https://openrouter.ai/api/v1", api_key_env = "LLM_OPENAI_COMPATIBLE_API_KEY" }, fallback = { transport = "gemini", model = "gemini-2.5-flash" } }
 MAX_TOKENS_SHORT = 1000
 MAX_TOKENS_LONG = 4000
-THINKING_BUDGET_TOKENS = 512
-BACKUP_PROVIDER = "google"
-BACKUP_MODEL = "gemini-2.5-flash"
 
 # Dream settings
 [dream]
@@ -179,24 +136,10 @@ DOCUMENT_THRESHOLD = 50
 IDLE_TIMEOUT_MINUTES = 60
 MIN_HOURS_BETWEEN_DREAMS = 8
 ENABLED_TYPES = ["omni"]
-# PROVIDER = "custom"
-# MODEL = "qwen/qwen3-235b-a22b-2507"
-PROVIDER = "custom"
-MODEL = "qwen/qwen3-235b-a22b-2507"
-MAX_OUTPUT_TOKENS = 16384
-THINKING_BUDGET_TOKENS = 8192
+DEDUCTION_MODEL_CONFIG = { transport = "openai", model = "qwen/qwen3.7-max", max_output_tokens = 16384, thinking_budget_tokens = 8192, overrides = { base_url = "https://openrouter.ai/api/v1", api_key_env = "LLM_OPENAI_COMPATIBLE_API_KEY" }, fallback = { transport = "gemini", model = "gemini-2.5-pro" } }
+INDUCTION_MODEL_CONFIG = { transport = "openai", model = "qwen/qwen3.6-plus", max_output_tokens = 16384, thinking_budget_tokens = 8192, overrides = { base_url = "https://openrouter.ai/api/v1", api_key_env = "LLM_OPENAI_COMPATIBLE_API_KEY" } }
 MAX_TOOL_ITERATIONS = 20
 HISTORY_TOKEN_LIMIT = 16384
-# BACKUP_PROVIDER = "google"
-# BACKUP_MODEL = "gemini-2.5-pro"
-BACKUP_PROVIDER = "google"
-BACKUP_MODEL = "gemini-2.5-pro"
-
-# Specialist models (use same provider as main model)
-# DEDUCTION_MODEL = "qwen/qwen-2.5-72b-instruct"
-# INDUCTION_MODEL = "qwen/qwen-2.5-72b-instruct"
-DEDUCTION_MODEL = "qwen/qwen-2.5-72b-instruct"
-INDUCTION_MODEL = "qwen/qwen-2.5-72b-instruct"
 
 # Surprisal-based sampling subsystem
 [dream.surprisal]
@@ -246,7 +189,6 @@ TYPE = "pgvector"
 # Migration flag: set to true when migration from pgvector is complete
 MIGRATED = false
 NAMESPACE = "honcho"
-DIMENSIONS = 1536
 # TURBOPUFFER_API_KEY = "your-turbopuffer-api-key"
 # TURBOPUFFER_REGION = "us-east-1"
 LANCEDB_PATH = "./lancedb_data"

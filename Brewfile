@@ -1,22 +1,26 @@
 tap "dagger/tap"
 tap "daveshanley/vacuum", trusted: true
+tap "dopplerhq/cli"
 tap "infisical/get-cli"
+tap "oven-sh/bun"
 # Code searching, linting, rewriting
 brew "ast-grep"
 # Improved shell history for zsh, bash, fish and nushell
 brew "atuin"
 # Bash Automated Testing System
 brew "bats-core"
+# JavaScript runtime, bundler, and package manager
+brew "bun"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
 # Create and run Linux containers using lightweight virtual machines
 brew "container"
-# CLI for interacting with Doppler secrets and configuration
-brew "doppler"
 # Modern, maintained replacement for ls
 brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
+# Terminal text editor and IDE (getfresh.dev)
+brew "fresh-editor"
 # Fast and simple Node.js version manager
 brew "fnm"
 # GitHub command-line tool
@@ -37,6 +41,8 @@ brew "git-sizer"
 brew "gitleaks"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
+# A task runner / simpler Make alternative written in Go
+brew "go-task"
 # CLI for Drive, Gmail, Calendar, Sheets, Docs, Chat, Admin, and more
 brew "googleworkspace-cli"
 # Run and Test HTTP Requests with plain text and curl
@@ -106,6 +112,8 @@ cask "git-credential-manager"
 cask "meld"
 # The worlds fastest and most scalable OpenAPI linter
 cask "daveshanley/vacuum/vacuum", trusted: true
+# CLI for Doppler secrets and configuration (from official tap)
+cask "dopplerhq/cli/doppler"
 # Open-source code editor
 cask "visual-studio-code"
 # Multiplayer code editor
