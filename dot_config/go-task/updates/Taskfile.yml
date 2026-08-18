@@ -9,8 +9,11 @@ tasks:
     cmds:
       - brew upgrade
 
-  node-lts:
+  fnm-lts:
     desc: Update Node LTS versions via fnm
+    preconditions:
+      - sh: command -v fnm
+        msg: "bun is not installed so no updates to perform"
     cmds:
       - fnm install lts/jod
       - fnm install lts/krypton
@@ -20,22 +23,36 @@ tasks:
 
   bun-global:
     desc: Update versions of global CLIs installed via bun
+    preconditions:
+      - sh: command -v bun
+        msg: "bun is not installed so no updates to perform"
     dir: ~/.bun/install/global
     cmd: bun install
 
   uv-tool:
     desc: Upgrade all tools installed via uv tool
-    cmds:
-      - uv tool upgrade --all
+    preconditions:
+      - sh: command -v uv
+        msg: "uv is not installed so no updates to perform"
+    cmd: uv tool upgrade --all
 
+  hermes:
+    desc: Upgrade the hermes agent
+    preconditions:
+      - sh: command -v hermes
+        msg: "hermes is not installed so no updates to perform"
+    cmd: hermes update
+    
   all:
     desc: Default update sequence for Forge Rovo agents
     cmds:
       - echo "brew"
       - task: brew
-      - echo "node-lts"
-      - task: node-lts
+      - echo "fnm-lts"
+      - task: fnm-lts
       - echo "bun-global"
       - task: bun-global
       - echo "uv-tool"
       - task: uv-tool
+      - echo "hermes"
+      - task: hermes
