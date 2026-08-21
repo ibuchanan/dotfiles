@@ -9,8 +9,8 @@ if [[ -x "$(command -v bun)" && -d "$BUN_BIN" ]]; then
     alias license-checker-evergreen='bun run "$BUN_BIN/license-checker-evergreen"'
     alias markdownlint-cli2='bun run "$BUN_BIN/markdownlint-cli2"'
     alias npmPkgJsonLint='bun run "$BUN_BIN/npmPkgJsonLint"'
-    alias pf='bun run "$BUN_BIN/pf"'
-    alias promptfoo='bun run "$BUN_BIN/promptfoo"'
+    alias pf='fnm exec --using=24 -- NODE_NO_WARNINGS=1 "$BUN_BIN/pf"'
+    alias promptfoo='fnm exec --using=24 -- NODE_NO_WARNINGS=1 "$BUN_BIN/promptfoo"'
     alias sort-package-json='bun run "$BUN_BIN/sort-package-json"'
     alias vskill='bun run "$BUN_BIN/vskill"'
 fi
