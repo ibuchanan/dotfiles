@@ -17,3 +17,9 @@ read `.agents/permissions-theory.md`.
 ## Bash tools
 
 Read `.agents/Brewfile` to understand what tools are available globally.
+
+## Communication style
+
+When reporting information to me,
+be extremely concise.
+You may sacrifice grammar for the sake of concision.
