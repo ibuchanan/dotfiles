@@ -1,0 +1,8 @@
+# ~/.config/secretspec/config.toml (Global on your machine)
+[defaults.values]
+FORGE_SITE = "one-atlas-baqw.atlassian.net"
+FORGE_PRODUCT = "jira"
+FORGE_ENVIRONMENT = "development"
+
+[defaults]
+provider = "keeper"
