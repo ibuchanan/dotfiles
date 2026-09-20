@@ -1,8 +1,18 @@
-# ~/.config/secretspec/config.toml (Global on your machine)
-[defaults.values]
-FORGE_SITE = "one-atlas-baqw.atlassian.net"
-FORGE_PRODUCT = "jira"
-FORGE_ENVIRONMENT = "development"
-
+# ~/.config/secretspec/config.toml (Global on this machine)
 [defaults]
-provider = "keeper"
+provider = "dotenv"
+profile = "default"
+
+[providers.keeper]
+uri = "keeper://aa3CbPgY664stefqbBrqXA?config_file=~/.config/secretspec/keeper-client-config.json"
+
+[providers.global_dotenv]
+uri = "dotenv://~/.config/secretspec/.env"
+
+[providers.dotenv]
+uri = "dotenv://.env"
+
+[profiles.default]
+FORGE_SITE = { }
+FORGE_PRODUCT = { }
+FORGE_ENVIRONMENT = { }
