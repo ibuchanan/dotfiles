@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 # Run this file with [go-task](https://taskfile.dev/).
 # Tasks refresh global tooling.
@@ -36,13 +36,18 @@ tasks:
         msg: "uv is not installed so no updates to perform"
     cmd: uv tool upgrade --all
 
+  twg-cli:
+    desc: Update the TWG CLI to latest version
+    cmds:
+      - twg upgrade
+
   hermes:
     desc: Upgrade the hermes agent
     preconditions:
       - sh: command -v hermes
         msg: "hermes is not installed so no updates to perform"
     cmd: hermes update
-    
+
   all:
     desc: Default update sequence for Forge Rovo agents
     cmds:
@@ -54,5 +59,7 @@ tasks:
       - task: bun-global
       - echo "uv-tool"
       - task: uv-tool
+      - echo "twg-cli"
+      - task: twg-cli
       - echo "hermes"
       - task: hermes
