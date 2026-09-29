@@ -27,7 +27,7 @@ tasks:
       - sh: command -v bun
         msg: "bun is not installed so no updates to perform"
     dir: ~/.bun/install/global
-    cmd: bun install
+    cmd: bun update
 
   uv-tool:
     desc: Upgrade all tools installed via uv tool
