@@ -3,63 +3,12 @@ version: "3"
 # Run this file with [go-task](https://taskfile.dev/).
 # Tasks refresh global tooling.
 
+includes:
+  update: ./updates.yml
+
 tasks:
-  brew:
-    desc: Update versions of brew packages with brew update
-    cmds:
-      - brew upgrade
-
-  fnm-lts:
-    desc: Update Node LTS versions via fnm
-    preconditions:
-      - sh: command -v fnm
-        msg: "bun is not installed so no updates to perform"
-    cmds:
-      - fnm install lts/jod
-      - fnm install lts/krypton
-      - fnm install lts/latest
-      - fnm default lts/krypton
-      - fnm use default
-
-  bun-global:
-    desc: Update versions of global CLIs installed via bun
-    preconditions:
-      - sh: command -v bun
-        msg: "bun is not installed so no updates to perform"
-    dir: ~/.bun/install/global
-    cmd: bun update
-
-  uv-tool:
-    desc: Upgrade all tools installed via uv tool
-    preconditions:
-      - sh: command -v uv
-        msg: "uv is not installed so no updates to perform"
-    cmd: uv tool upgrade --all
-
-  twg-cli:
-    desc: Update the TWG CLI to latest version
-    cmds:
-      - twg upgrade
-
-  hermes:
-    desc: Upgrade the hermes agent
-    preconditions:
-      - sh: command -v hermes
-        msg: "hermes is not installed so no updates to perform"
-    cmd: hermes update
-
   all:
-    desc: Default update sequence for Forge Rovo agents
+    desc: Default update sequence
     cmds:
-      - echo "brew"
-      - task: brew
-      - echo "fnm-lts"
-      - task: fnm-lts
-      - echo "bun-global"
-      - task: bun-global
-      - echo "uv-tool"
-      - task: uv-tool
-      - echo "twg-cli"
-      - task: twg-cli
-      - echo "hermes"
-      - task: hermes
+      - for: [brew, fnm-lts, bun-global, uv-tool, ccc-restart, twg-cli, hermes]
+        task: update:{{.ITEM}}

@@ -1,0 +1,56 @@
+version: "3"
+tasks:
+  brew:
+    desc: Update versions of brew packages with brew update
+    preconditions:
+      - sh: command -v brew
+        msg: "Homebrew is not installed or not in your PATH."
+    cmds:
+      - brew upgrade
+
+  fnm-lts:
+    desc: Update Node LTS versions via fnm
+    preconditions:
+      - sh: command -v fnm
+        msg: "fnm is not installed so no updates to perform"
+    cmds:
+      - fnm install lts/jod
+      - fnm install lts/krypton
+      - fnm install lts/latest
+      - fnm default lts/krypton
+      - fnm use default
+
+  bun-global:
+    desc: Update versions of global CLIs installed via bun
+    preconditions:
+      - sh: command -v bun
+        msg: "bun is not installed so no updates to perform"
+    dir: ~/.bun/install/global
+    cmd: bun update
+
+  uv-tool:
+    desc: Upgrade all tools installed via uv tool
+    preconditions:
+      - sh: command -v uv
+        msg: "uv is not installed so no updates to perform"
+    cmd: uv tool upgrade --all
+
+  ccc-restart:
+    deps: [uv-tool]
+    status:
+      - "! command -v ccc"
+    cmds:
+      - ccc daemon restart
+
+  twg-cli:
+    desc: Update the TWG CLI to latest version
+    status:
+      - "! command -v twg"
+    cmds:
+      - twg upgrade
+
+  hermes:
+    desc: Upgrade the hermes agent
+    status:
+      - "! command -v hermes"
+    cmd: hermes update
