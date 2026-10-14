@@ -2,6 +2,7 @@
   "dependencies": {
     "@biomejs/biome": "*",
     "@forge/cli": "*",
+    "@opencode/cli": "*",
     "@usebruno/cli": "*",
     "create-cloudflare": "*",
     "cspell": "*",
@@ -11,10 +12,12 @@
     "license-checker-evergreen": "*",
     "markdownlint-cli2": "*",
     "npm-package-json-lint": "*",
-    "opencode-ai": "*",
     "promptfoo": "*",
     "sort-package-json": "*",
     "turbo": "*",
     "vskill": "*"
-  }
+  },
+  "trustedDependencies": [
+    "@opencode/cli"
+  ]
 }
