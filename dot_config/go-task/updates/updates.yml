@@ -6,7 +6,8 @@ tasks:
       - sh: command -v brew
         msg: "Homebrew is not installed or not in your PATH."
     cmds:
-      - brew upgrade
+      - cmd: brew upgrade
+        ignore_error: true
 
   fnm-lts:
     desc: Update Node LTS versions via fnm
@@ -53,4 +54,6 @@ tasks:
     desc: Upgrade the hermes agent
     status:
       - "! command -v hermes"
-    cmd: hermes update
+    cmds:
+      - cmd: hermes update
+        ignore_error: true
