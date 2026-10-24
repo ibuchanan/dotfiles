@@ -3,16 +3,7 @@
 provider = "dotenv"
 profile = "default"
 
-[providers.keeper]
-uri = "keeper://aa3CbPgY664stefqbBrqXA?config_file=~/.config/secretspec/keeper-client-config.json"
-
-[providers.global_dotenv]
-uri = "dotenv://~/.config/secretspec/.env"
-
-[providers.dotenv]
-uri = "dotenv://.env"
-
-[profiles.default]
-FORGE_SITE = { }
-FORGE_PRODUCT = { }
-FORGE_ENVIRONMENT = { }
+[defaults.providers]
+user_dotenv = "dotenv://~/.config/secretspec/ibuchanan.env"
+keeper = "keeper://aa3CbPgY664stefqbBrqXA?config_file=~/.config/secretspec/keeper-client-config.json"
+dotenv = "dotenv://.env"

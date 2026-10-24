@@ -16,6 +16,9 @@ read `.agents/permissions-theory.md`.
 
 ## Bash tools
 
+You are in a Zsh shell running on MacOS
+where some common shell commands have different switches from Linux.
+Try using the `run-modern-shell-tools` skill if a Bash tool fails.
 Read `.agents/Brewfile` to understand what tools are available globally.
 
 ## Communication style
