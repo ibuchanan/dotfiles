@@ -7,7 +7,7 @@
 if [[ -x "$(command -v dagger)" && -x "$(command -v podman)" ]]; then
     version=$(brew list --versions dagger)
     if [[ -n "$version" ]]; then
-        export _EXPERIMENTAL_DAGGER_RUNNER_HOST="image+podman://registry.dagger.io/engine:v${version#* }"
+        export DAGGER_ENGINE="image+podman://registry.dagger.io/engine:v${version#* }"
         export DAGGER_NO_NAG=1
     fi
 fi
