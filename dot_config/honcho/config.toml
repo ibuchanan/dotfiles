@@ -62,8 +62,8 @@ MAX_MESSAGE_CONTENT_CHARS = 2000  # Max chars per message in tool results
 
 # Embedding settings
 [embedding]
-MODEL_CONFIG = { transport = "openai", model = "text-embedding-3-small", overrides = { base_url = "https://openrouter.ai/api/v1", api_key_env = "LLM_OPENAI_COMPATIBLE_API_KEY" } }
-VECTOR_DIMENSIONS = 1536
+MODEL_CONFIG = { transport = "openai", model = "text-embedding-embeddinggemma-300m-qat", overrides = { base_url = "http://localhost:1234/v1", api_key = "lm-studio" } }
+VECTOR_DIMENSIONS = 768
 
 # Deriver settings
 [deriver]

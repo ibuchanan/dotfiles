@@ -95,8 +95,5 @@
       "enabled": true
     }
   },
-  "plugin": [
-    "/Users/ibuchanan/dev/git/github.com/plastic-labs/opencode-honcho/honcho-ai-opencode-honcho-0.1.0.tgz",
-    "/Users/ibuchanan/dev/git/github.com/plastic-labs/opencode-honcho",
-  ]
+  "plugin": [ ]
 }
