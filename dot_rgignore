@@ -1,0 +1,48 @@
+# --- macOS System & Permission-Protected Folders ---
+/Library/
+.DS_Store
+.Trash/
+.fseventsd/
+.Spotlight-V100/
+.TemporaryItems/
+
+# --- Heavy Media & Bundle Directories ---
+/Pictures/
+/Music/
+/Movies/
+*.photoslibrary/
+*.musiclibrary/
+*.tvlibrary/
+*.app/
+*.framework/
+*.xcarchive/
+
+# --- Virtual Machines & Disk Images ---
+*.dmg
+*.iso
+*.sparseimage
+*.sparsebundle
+*.vmdk
+*.qcow2
+*.utm/
+*.vmwarevm/
+*.pvm/
+/.orbstack/
+/.docker/
+/.colima/
+
+# --- Caches & Language Package Managers ---
+/.cache/
+/.npm/
+/.cargo/registry/
+/.cargo/git/
+/.rustup/
+/.gradle/
+/.m2/
+/.pyenv/
+/.nvm/
+/.rbenv/
+/go/pkg/
+node_modules/
+__pycache__/
+.venv/
